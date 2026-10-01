@@ -2,6 +2,11 @@
 
 Handyman, maintenance and fit-out services across France. French + English, 3D hero (Three.js).
 
+**Live:** https://aelsaad.github.io/renova-mm/ (GitHub Pages, repo `aelsaad/renova-mm`)
+
+To update the live site: commit and `git push` — GitHub rebuilds it in about a minute.
+The site is unlisted for now (`noindex` meta in `index.html` + `robots.txt`); remove both when it officially launches.
+
 ## Run locally
 
 ```bash
