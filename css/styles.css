@@ -502,8 +502,8 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
   .fb3 { bottom: 4%; left: 4%; }
   .carousel-stage { height: 480px; }
   .carousel { width: 230px; height: 310px; margin-left: -115px; }
-  .reviews-stage { height: 610px; }
-  .reviews-stage .carousel { width: 295px; height: 450px; margin-left: -147px; }
+  .reviews-stage { height: 560px; }
+  .reviews-stage .carousel { width: 295px; height: 400px; margin-left: -147px; }
   .car-item.review { padding: 28px 24px; }
   .form { padding: 24px; }
   .footer-inner { justify-content: center; text-align: center; }
