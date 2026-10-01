@@ -316,7 +316,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 
 /* ---------- CTA ---------- */
 .cta-band { padding: 0 0 20px; background: var(--night); }
-.faq + .cta-band { padding-top: 28px; } /* after the light FAQ: give the gold box dark space above */
+.light + .cta-band { padding-top: 28px; } /* after a light section: a little dark space above the gold box */
 .cta-box { position: relative; overflow: hidden; border-radius: 30px; padding: 56px 60px; display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; background: var(--grad-gold); color: var(--night); }
 .cta-box h2 { font-size: clamp(28px, 3.6vw, 44px); font-weight: 800; position: relative; }
 .cta-box p { font-size: 18px; margin-top: 8px; color: #3a2c10; position: relative; }
@@ -375,18 +375,27 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 .svc-link svg { width: 16px; height: 16px; transition: transform .25s; }
 .svc-link:hover svg { transform: translateX(4px); }
 
-/* ---------- FAQ ---------- */
-.faq-wrap { max-width: 880px; }
-.faq-list { display: grid; gap: 12px; }
-.faq-item { background: #fff; border: 1px solid rgba(39,42,45,.08); border-radius: 18px; padding: 0 24px; transition: border-color .3s, box-shadow .3s; }
-.faq-item[open] { border-color: rgba(201,154,58,.55); box-shadow: 0 24px 50px -34px rgba(39,42,45,.45); }
-.faq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 0; font: 700 17px/1.35 var(--f-head); color: var(--char); }
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary i { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: rgba(201,154,58,.15); position: relative; transition: transform .3s var(--ease), background .3s; }
-.faq-item summary i::before, .faq-item summary i::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 2px; margin: -1px 0 0 -6px; border-radius: 2px; background: var(--gold-ink); }
-.faq-item summary i::after { transform: rotate(90deg); }
-.faq-item[open] summary i { transform: rotate(45deg); background: var(--grad-gold); }
-.faq-item p { margin: 0; padding: 0 0 22px; color: #5d6166; }
+/* ---------- Reviews (3D carousel of cards) ---------- */
+.reviews { overflow: hidden; }
+.reviews-stage { height: 500px; }
+.reviews-stage .carousel { width: 320px; height: 340px; margin-left: -160px; }
+.car-item.review {
+  display: flex; flex-direction: column; gap: 14px; padding: 28px 26px; background: #fff; color: var(--char);
+  border: 1px solid rgba(39,42,45,.08); box-shadow: 0 30px 60px -36px rgba(39,42,45,.45);
+  -webkit-box-reflect: unset;
+}
+.car-item.review::after { display: none; }
+.review .stars { display: flex; gap: 3px; color: var(--gold); }
+.review .stars svg { width: 18px; height: 18px; fill: currentColor; stroke: none; }
+.review blockquote { margin: 0; flex: 1; font-size: 15.5px; line-height: 1.6; color: #44494e; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 7; }
+.review blockquote::before { content: "“"; display: block; font: 800 44px/0.6 var(--f-head); color: var(--gold); margin: 10px 0 4px; }
+.review figcaption { position: static; display: grid; gap: 2px; padding-top: 14px; border-top: 1px solid rgba(39,42,45,.08); }
+.review figcaption::before { display: none; }
+.review figcaption b { font: 700 16px var(--f-head); color: var(--char); }
+.review figcaption span { font-size: 13px; color: var(--stone); }
+.light .carousel-nav button { border-color: rgba(39,42,45,.18); background: #fff; color: var(--char); }
+.light .carousel-nav button:hover { background: var(--grad-gold); color: #17130a; border-color: transparent; }
+.light .carousel-caption { color: var(--gold-ink); }
 
 /* ---------- Service pages ---------- */
 .sp-hero { position: relative; padding: 150px 0 100px; overflow: hidden; }
@@ -502,7 +511,9 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
   .carousel-stage { height: 480px; }
   .carousel { width: 230px; height: 310px; margin-left: -115px; }
   .cta-box { padding: 40px 26px; }
-  .faq + .cta-band { padding-top: 20px; }
+  .light + .cta-band { padding-top: 20px; }
+  .reviews-stage { height: 470px; }
+  .reviews-stage .carousel { width: 270px; height: 340px; margin-left: -135px; }
   .form { padding: 24px; }
   .footer-inner { justify-content: center; text-align: center; }
   .footer .social { justify-content: center; }

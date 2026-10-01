@@ -122,6 +122,25 @@ def carousel_html(lang):
     return "".join(out)
 
 
+STAR = '<svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3L2.8 9.5l6.4-.9z"/></svg>'
+
+
+def reviews_html(lang):
+    out = []
+    for r in CFG.get("reviews") or []:
+        rating = max(1, min(5, int(r.get("rating", 5))))
+        text = (r.get("text") or {}).get(lang) or (r.get("text") or {}).get("fr", "")
+        service = (r.get("service") or {}).get(lang) or (r.get("service") or {}).get("fr", "")
+        meta = " · ".join(x for x in [service, r.get("city", "")] if x)
+        out.append(
+            f'<figure class="car-item review" data-caption="{r["name"]}">'
+            f'<div class="stars" role="img" aria-label="{rating}/5">{STAR * rating}</div>'
+            f'<blockquote>{text}</blockquote>'
+            f'<figcaption><b>{r["name"]}</b><span>{meta}</span></figcaption></figure>'
+        )
+    return "".join(out)
+
+
 def select_html(lang):
     opts = [f'<option value="">{T(lang, "f.choose")}</option>']
     opts += [f"<option>{s['t']}</option>" for s in services(lang)]
@@ -162,17 +181,6 @@ def business_ld(lang):
             ],
         },
         **({"sameAs": same_as} if same_as else {}),
-    }
-
-
-def faq_ld(lang):
-    return {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {"@type": "Question", "name": T(lang, f"faq.{i}.q"), "acceptedAnswer": {"@type": "Answer", "text": T(lang, f"faq.{i}.a")}}
-            for i in range(1, 6)
-        ],
     }
 
 
@@ -274,6 +282,15 @@ def base_soup(lang):
     ring = soup.find(id="carousel")
     ring.clear()
     ring.append(frag(carousel_html(lang)))
+    reviews = soup.find(id="reviews")
+    if reviews:
+        cards = reviews_html(lang)
+        if cards:
+            ring = soup.find(id="reviewsRing")
+            ring.clear()
+            ring.append(frag(cards))
+        else:
+            reviews.decompose()  # no real reviews yet -> no section
     sel = soup.find(id="serviceSelect")
     sel.clear()
     sel.append(frag(select_html(lang)))
@@ -410,7 +427,7 @@ def build():
     for lang in LANGS:
         home = base_soup(lang)
         set_head(home, lang, T(lang, "meta.title"), T(lang, "meta.desc"), home_path(lang),
-                 {l: home_path(l) for l in LANGS}, [business_ld(lang), faq_ld(lang)])
+                 {l: home_path(l) for l in LANGS}, [business_ld(lang)])
         home_copy = copy.copy(home)  # pristine sections to reuse on service pages
         written.append(finalize(home, home_path(lang)))
 

@@ -25,7 +25,7 @@ python3 tools/build.py
 
 | What | Where |
 |---|---|
-| Phone number, email, social links, gallery photos, contact-form key (Web3Forms), statistics token (Cloudflare) | `js/config.js` |
+| Phone number, email, social links, gallery photos, customer reviews (real ones only — section hidden while empty), contact-form key (Web3Forms), statistics token (Cloudflare) | `js/config.js` |
 | All texts, French + English (incl. service pages, FAQ, page titles) | `js/i18n.js` |
 | Page layout (all pages) | `src/index.html` |
 | Colours, layout styles | `css/styles.css` (tokens at the top) |

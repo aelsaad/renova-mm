@@ -64,7 +64,7 @@
   }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
 
   function setupReveal() {
-    [".who-grid", ".steps", ".promise-list", ".faq-list", ".sp-items"].forEach((g) => {
+    [".who-grid", ".steps", ".promise-list", ".sp-items"].forEach((g) => {
       $$(g + " .reveal").forEach((el, i) => { el.style.transitionDelay = i * 0.1 + "s"; });
     });
     $$(".svc-grid .reveal").forEach((el, i) => { el.style.transitionDelay = (i % 4) * 0.08 + "s"; });
@@ -106,80 +106,67 @@
     c.style.setProperty("--ry", "0deg");
   }
 
-  /* ================= 3D carousel ================= */
-  const car = { rot: 0, vel: 0, dragging: false, lastX: 0, auto: true, items: [] };
-  const stage = $("#carouselStage");
-  const ring = $("#carousel");
+  /* ================= 3D carousels (photos, reviews) ================= */
+  // Each .carousel-stage holds a .carousel ring of .car-item cards, optional .car-prev/.car-next buttons
+  // and an optional .carousel-caption that shows the front card's caption.
+  function makeCarousel(stage) {
+    const ring = $(".carousel", stage);
+    const items = $$(".car-item", ring);
+    if (!items.length) return null;
+    const car = { rot: 0, vel: 0, dragging: false, lastX: 0, auto: true, front: -1, visible: false };
+    const caption = $(".carousel-caption", stage);
+    const fade = stage.classList.contains("reviews-stage"); // light cards: fade instead of darken
 
-  function setupCarousel() {
-    if (!ring) return;
-    if (!$(".car-item", ring)) {
-      const photos = CFG.gallery || [];
-      if (!photos.length) { const w = $("#work"); if (w) w.style.display = "none"; return; }
-      ring.innerHTML = photos.map((p) => {
-        const cap = p[lang] || p.fr;
-        return `<figure class="car-item"><img src="${p.src}" alt="${cap}" loading="lazy" /><figcaption>${cap}</figcaption></figure>`;
-      }).join("");
+    function layout() {
+      const n = items.length;
+      const w = ring.offsetWidth;
+      car.step = 360 / n;
+      car.radius = Math.round(w / 2 / Math.tan(Math.PI / n)) + (w > 260 ? 70 : 40);
+      items.forEach((el, i) => { el.style.transform = `rotateY(${i * car.step}deg) translateZ(${car.radius}px)`; });
     }
-    car.items = $$(".car-item", ring);
-    layoutCarousel();
-  }
-
-  function layoutCarousel() {
-    const n = car.items.length;
-    if (!n) return;
-    const w = ring.offsetWidth;
-    car.step = 360 / n;
-    car.radius = Math.round(w / 2 / Math.tan(Math.PI / n)) + (w > 260 ? 70 : 40);
-    car.items.forEach((el, i) => {
-      el.style.transform = `rotateY(${i * car.step}deg) translateZ(${car.radius}px)`;
-    });
-  }
-
-  function drawCarousel() {
-    ring.style.transform = `translateZ(${-car.radius}px) rotateY(${-car.rot}deg)`;
-    const n = car.items.length;
-    let front = 0, best = 999;
-    car.items.forEach((el, i) => {
-      let d = ((i * car.step - car.rot) % 360 + 540) % 360 - 180; // -180..180
-      const a = Math.abs(d);
-      if (a < best) { best = a; front = i; }
-      const k = Math.max(0, 1 - a / 180);
-      el.style.filter = `brightness(${0.35 + 0.65 * k * k})`;
-    });
-    const cap = $("#carCaption");
-    if (cap && car.front !== front) {
-      car.front = front;
-      cap.textContent = car.items[front].querySelector("figcaption").textContent;
-    }
-    return n;
-  }
-
-  function carouselLoop() {
-    if (!car.dragging) {
-      if (car.target != null) {
-        const diff = car.target - car.rot;
-        car.rot += diff * 0.12;
-        if (Math.abs(diff) < 0.05) { car.rot = car.target; car.target = null; }
-      } else {
-        car.rot += car.vel;
-        car.vel *= 0.95;
-        if (car.auto && Math.abs(car.vel) < 0.05 && !reduceMotion) car.rot += 0.08;
+    function draw() {
+      ring.style.transform = `translateZ(${-car.radius}px) rotateY(${-car.rot}deg)`;
+      let front = 0, best = 999;
+      items.forEach((el, i) => {
+        const a = Math.abs(((i * car.step - car.rot) % 360 + 540) % 360 - 180);
+        if (a < best) { best = a; front = i; }
+        const k = Math.max(0, 1 - a / 180);
+        if (fade) el.style.opacity = (0.18 + 0.82 * k * k).toFixed(3);
+        else el.style.filter = `brightness(${0.35 + 0.65 * k * k})`;
+      });
+      if (caption && car.front !== front) {
+        car.front = front;
+        const it = items[front];
+        caption.textContent = it.dataset.caption || (it.querySelector("figcaption") || it).textContent;
       }
     }
-    drawCarousel();
-  }
+    function tick() {
+      if (!car.visible) return;
+      if (!car.dragging) {
+        if (car.target != null) {
+          const diff = car.target - car.rot;
+          car.rot += diff * 0.12;
+          if (Math.abs(diff) < 0.05) { car.rot = car.target; car.target = null; }
+        } else {
+          car.rot += car.vel;
+          car.vel *= 0.95;
+          if (car.auto && Math.abs(car.vel) < 0.05 && !reduceMotion) car.rot += 0.08;
+        }
+      }
+      draw();
+    }
+    function pauseAuto(ms) {
+      car.auto = false;
+      clearTimeout(car.resume);
+      car.resume = setTimeout(() => { car.auto = true; }, ms);
+    }
+    function snapTo(dir) {
+      const base = Math.round(car.rot / car.step) * car.step;
+      car.target = base + dir * car.step;
+      car.vel = 0;
+      pauseAuto(6000);
+    }
 
-  function snapTo(dir) {
-    const base = Math.round(car.rot / car.step) * car.step;
-    car.target = base + dir * car.step;
-    car.vel = 0;
-    car.auto = false;
-    clearTimeout(car.resume);
-    car.resume = setTimeout(() => { car.auto = true; }, 6000);
-  }
-
-  if (stage) {
     stage.addEventListener("pointerdown", (e) => {
       if (e.target.closest("button")) return;
       car.dragging = true; car.lastX = e.clientX; car.vel = 0; car.target = null; car.auto = false;
@@ -195,14 +182,26 @@
     const end = () => {
       if (!car.dragging) return;
       car.dragging = false;
-      clearTimeout(car.resume);
-      car.resume = setTimeout(() => { car.auto = true; }, 5000);
+      pauseAuto(5000);
     };
     stage.addEventListener("pointerup", end);
     stage.addEventListener("pointercancel", end);
-    $("#carPrev").addEventListener("click", () => snapTo(-1));
-    $("#carNext").addEventListener("click", () => snapTo(1));
-    window.addEventListener("resize", layoutCarousel);
+    const prev = $(".car-prev", stage), next = $(".car-next", stage);
+    if (prev) prev.addEventListener("click", () => snapTo(-1));
+    if (next) next.addEventListener("click", () => snapTo(1));
+    window.addEventListener("resize", layout);
+    new IntersectionObserver((en) => { car.visible = en[0].isIntersecting; }).observe(stage);
+    layout();
+    draw();
+    return { tick };
+  }
+
+  const carousels = [];
+  function setupCarousels() {
+    $$(".carousel-stage").forEach((stage) => {
+      const c = makeCarousel(stage);
+      if (c) carousels.push(c);
+    });
   }
 
   /* ================= 3D map of France ================= */
@@ -361,12 +360,10 @@
   /* ================= Boot ================= */
   setupReveal();
   setupMap();
-  setupCarousel();
+  setupCarousels();
 
-  let carVisible = false;
-  if (stage) new IntersectionObserver((en) => { carVisible = en[0].isIntersecting; }).observe(stage);
   (function loop() {
-    if (carVisible && car.items.length) carouselLoop();
+    carousels.forEach((c) => c.tick());
     requestAnimationFrame(loop);
   })();
 })();

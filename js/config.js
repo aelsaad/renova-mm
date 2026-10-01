@@ -25,6 +25,14 @@ window.RENOVA = {
     whatsapp: true
   },
 
+  /* Customer reviews — REAL reviews only, with the customer's consent. The section stays hidden while the list is empty.
+     One entry per review, e.g.:
+     { name: "Sophie M.", city: "Bagnolet", rating: 5,
+       service: { fr: "Montage de meubles", en: "Furniture assembly" },
+       text: { fr: "Texte de l'avis…", en: "Review text…" } },
+     Then run tools/build.py. */
+  reviews: [],
+
   /* "Nos réalisations" 3D carousel — files live in assets/photos/ */
   gallery: [
     { src: "assets/photos/cuisine-anthracite.webp", fr: "Cuisine équipée", en: "Fitted kitchen" },
