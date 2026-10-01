@@ -1,0 +1,6 @@
+# original, unprocessed photos (the site uses the optimised copies in assets/photos/)
+/photos/
+# local tooling / OS files
+.claude/
+.DS_Store
+__pycache__/

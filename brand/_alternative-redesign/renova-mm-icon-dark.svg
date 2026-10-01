@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 584 516" role="img" aria-label="RENOVA MM"><title>RENOVA MM</title><g transform="translate(-16.00 12.00) scale(1)">
+  <defs>
+    <linearGradient id="rmmIDGold" gradientUnits="userSpaceOnUse" x1="40" y1="12" x2="560" y2="480">
+      <stop offset="0" stop-color="#E8C067"/>
+      <stop offset=".55" stop-color="#C99A3A"/>
+      <stop offset="1" stop-color="#9E7024"/>
+    </linearGradient>
+    <clipPath id="rmmIDBase"><rect x="0" y="-50" width="700" height="530"/></clipPath>
+  </defs>
+  <g clip-path="url(#rmmIDBase)">
+    <!-- skyline -->
+    <path d="M296.0 132.0 L330.0 104.2 L330.0 262.1 L296.0 289.9Z" fill="url(#rmmIDGold)"/><path d="M342.0 86.0 L376.0 58.2 L376.0 224.4 L342.0 252.3Z" fill="url(#rmmIDGold)"/><path d="M388.0 40.0 L422.0 12.2 L422.0 186.8 L388.0 214.6Z" fill="url(#rmmIDGold)"/>
+    <path d="M434.0 12.2 L468.0 40.0 L468.0 214.6 L434.0 186.8Z" fill="#F6F1E7"/><path d="M480.0 58.2 L514.0 86.0 L514.0 252.3 L480.0 224.4Z" fill="#F6F1E7"/><path d="M526.0 104.2 L560.0 132.0 L560.0 289.9 L526.0 262.1Z" fill="#F6F1E7"/>
+    <!-- R -->
+    <path d="M66 480V226H150A59 59 0 0 1 150 344H66" fill="none" stroke="url(#rmmIDGold)" stroke-width="52" stroke-linejoin="miter"/>
+    <path d="M138 344L232 500" fill="none" stroke="url(#rmmIDGold)" stroke-width="52"/>
+    <!-- roof -->
+    <path d="M296 320L428 212L560 320" fill="none" stroke="#F6F1E7" stroke-width="28" stroke-linejoin="miter" stroke-miterlimit="8"/>
+    <path d="M324.7 332L428 247.5L531.3 332" fill="none" stroke="url(#rmmIDGold)" stroke-width="7" stroke-linejoin="miter" stroke-miterlimit="8"/>
+    <rect x="409.5" y="278" width="16" height="16" fill="url(#rmmIDGold)"/><rect x="409.5" y="299" width="16" height="16" fill="url(#rmmIDGold)"/><rect x="430.5" y="278" width="16" height="16" fill="url(#rmmIDGold)"/><rect x="430.5" y="299" width="16" height="16" fill="url(#rmmIDGold)"/>
+    <!-- MM -->
+    <path d="M280.0 480.0 L280.0 345.0 L312.0 345.0 L350.0 405.0 L388.0 345.0 L420.0 345.0 L420.0 480.0 L388.0 480.0 L388.0 401.0 L350.0 461.0 L312.0 401.0 L312.0 480.0Z" fill="#F6F1E7"/>
+    <path d="M436.0 480.0 L436.0 345.0 L468.0 345.0 L506.0 405.0 L544.0 345.0 L576.0 345.0 L576.0 480.0 L544.0 480.0 L544.0 401.0 L506.0 461.0 L468.0 401.0 L468.0 480.0Z" fill="#F6F1E7"/>
+  </g></g>
+</svg>
