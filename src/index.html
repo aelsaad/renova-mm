@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!-- Page template. Texts come from js/i18n.js — run `python3 tools/build.py` after editing. -->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RENOVA MM · Bricolage, maintenance &amp; aménagement partout en France</title>
+  <meta name="description" content="RENOVA MM : bricolage à domicile, maintenance en entreprise et aménagement hôtelier partout en France. Réparation, montage, pose, plomberie, électricité, éclairage. Devis gratuit." />
+  <meta name="theme-color" content="#141618" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=13" />
+  <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
+  </script>
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand" aria-label="RENOVA MM">
+        <img src="assets/img/renova-mm-icon-dark.svg" alt="" width="54" height="40" />
+        <span class="wordmark">RENOVA <b>MM</b></span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#who" data-i18n="nav.who">Pour qui</a>
+        <a href="#work" data-i18n="nav.work">Réalisations</a>
+        <a href="#promise" data-i18n="nav.promise">Engagements</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang" role="group" aria-label="Langue / Language">
+          <a data-lang="fr" href="index.html" hreflang="fr">FR</a>
+          <a data-lang="en" href="en/index.html" hreflang="en">EN</a>
+        </div>
+        <a class="nav-phone" data-phone-link href="#"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span data-phone></span></a>
+        <a href="#contact" class="btn btn-gold btn-sm nav-cta" data-i18n="nav.cta">Devis gratuit</a>
+        <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow reveal" data-i18n="hero.eyebrow"></span>
+          <h1 class="hero-title reveal">
+            <span data-i18n="hero.t1"></span>
+            <span class="gold-text" data-i18n="hero.t2"></span>
+          </h1>
+          <p class="hero-sub reveal" data-i18n="hero.sub"></p>
+          <div class="hero-btns reveal">
+            <a href="#contact" class="btn btn-gold"><span data-i18n="hero.cta1"></span><svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="#services" class="btn btn-line" data-i18n="hero.cta2"></a>
+          </div>
+          <ul class="chips reveal">
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="hero.chip1"></span></li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="hero.chip2"></span></li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="hero.chip3"></span></li>
+          </ul>
+        </div>
+
+        <div class="hero-visual" id="heroVisual">
+          <canvas id="hero3d" aria-hidden="true"></canvas>
+          <img class="hero-fallback" src="assets/img/renova-mm-logo-dark.svg" alt="RENOVA MM" />
+          <div class="float-badge fb1"><span class="fb-ico"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></span><span data-i18n="hero.badge1"></span></div>
+          <div class="float-badge fb2"><span class="fb-ico"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><span data-i18n="hero.badge2"></span></div>
+          <div class="float-badge fb3"><span class="fb-ico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3 17.8V21h3.2l6.3-6.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.3-.5-.5-2.3z"/></svg></span><span data-i18n="hero.badge3"></span></div>
+        </div>
+      </div>
+      <a href="#who" class="scroll-hint"><span data-i18n="hero.scroll"></span><i></i></a>
+    </section>
+
+    <!-- ============ WHO ============ -->
+    <section class="section who" id="who">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="who.eyebrow"></span>
+          <h2 data-i18n="who.title"></h2>
+        </div>
+        <div class="who-grid">
+          <article class="who-card tilt reveal">
+            <div class="who-ico"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg></div>
+            <span class="who-tag" data-i18n="who.a.tag"></span>
+            <h3 data-i18n="who.a.t"></h3>
+            <p data-i18n="who.a.d"></p>
+            <a href="#contact" class="who-link"><span data-i18n="who.link"></span><svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="who-card tilt reveal featured">
+            <div class="who-ico"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2M11 21v-3h2v3"/></svg></div>
+            <span class="who-tag" data-i18n="who.b.tag"></span>
+            <h3 data-i18n="who.b.t"></h3>
+            <p data-i18n="who.b.d"></p>
+            <a href="#contact" class="who-link"><span data-i18n="who.link"></span><svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="who-card tilt reveal">
+            <div class="who-ico"><svg viewBox="0 0 24 24"><path d="M3 19V7M21 19v-5a3 3 0 0 0-3-3H10v8"/><path d="M3 15h18"/><circle cx="6.5" cy="11.5" r="1.8"/></svg></div>
+            <span class="who-tag" data-i18n="who.c.tag"></span>
+            <h3 data-i18n="who.c.t"></h3>
+            <p data-i18n="who.c.d"></p>
+            <a href="#contact" class="who-link"><span data-i18n="who.link"></span><svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="section services light" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="svc.eyebrow"></span>
+          <h2 data-i18n="svc.title"></h2>
+          <p data-i18n="svc.sub"></p>
+        </div>
+        <div class="svc-grid" id="svcGrid"><!-- generated by tools/build.py --></div>
+      </div>
+    </section>
+
+    <!-- ============ WORK (3D carousel + before/after) ============ -->
+    <section class="section work" id="work">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="work.eyebrow"></span>
+          <h2 data-i18n="work.title"></h2>
+          <p data-i18n="work.sub"></p>
+        </div>
+      </div>
+      <div class="carousel-stage reveal" id="carouselStage">
+        <div class="carousel" id="carousel"><!-- generated by tools/build.py --></div>
+        <div class="carousel-floor" aria-hidden="true"></div>
+        <div class="carousel-nav">
+          <button id="carPrev" aria-label="Précédent"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <span class="carousel-caption" id="carCaption"></span>
+          <button id="carNext" aria-label="Suivant"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============ HOW ============ -->
+    <section class="section how" id="how">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="how.eyebrow"></span>
+          <h2 data-i18n="how.title"></h2>
+        </div>
+        <ol class="steps">
+          <li class="step reveal"><span class="step-num">01</span><h3 data-i18n="how.1.t"></h3><p data-i18n="how.1.d"></p></li>
+          <li class="step reveal"><span class="step-num">02</span><h3 data-i18n="how.2.t"></h3><p data-i18n="how.2.d"></p></li>
+          <li class="step reveal"><span class="step-num">03</span><h3 data-i18n="how.3.t"></h3><p data-i18n="how.3.d"></p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ PROMISE ============ -->
+    <section class="section promise light" id="promise">
+      <div class="container promise-grid">
+        <div class="promise-head reveal">
+          <span class="eyebrow" data-i18n="pr.eyebrow"></span>
+          <h2 data-i18n="pr.title"></h2>
+          <div class="cube-scene" aria-hidden="true">
+            <div class="cube">
+              <i class="f1" data-tool="screwdriver" data-tone="dark"><img src="assets/img/renova-mm-icon-dark.svg" alt="" /></i>
+              <i class="f2" data-tool="hammer" data-tone="gold"></i>
+              <i class="f3" data-tool="wrench" data-tone="dark"><img src="assets/img/renova-mm-icon-dark.svg" alt="" /></i>
+              <i class="f4" data-tool="screw" data-tone="gold"></i>
+              <i class="f5"><img src="assets/img/renova-mm-icon-dark.svg" alt="" /></i><i class="f6"></i>
+            </div>
+          </div>
+        </div>
+        <div class="promise-list">
+          <div class="promise-item reveal"><span class="p-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/><path d="m15.5 14.5 1.5 1.5 3-3"/></svg></span><div><h3 data-i18n="pr.1.t"></h3><p data-i18n="pr.1.d"></p></div></div>
+          <div class="promise-item reveal"><span class="p-ico"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span><div><h3 data-i18n="pr.2.t"></h3><p data-i18n="pr.2.d"></p></div></div>
+          <div class="promise-item reveal"><span class="p-ico"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z"/><path d="M19 15l.8 1.7 1.7.8-1.7.8L19 20l-.8-1.7-1.7-.8 1.7-.8z"/></svg></span><div><h3 data-i18n="pr.3.t"></h3><p data-i18n="pr.3.d"></p></div></div>
+          <div class="promise-item reveal"><span class="p-ico"><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13" width="4" height="6" rx="1.5"/><rect x="17.5" y="13" width="4" height="6" rx="1.5"/><path d="M20 19a3 3 0 0 1-3 3h-3"/></svg></span><div><h3 data-i18n="pr.4.t"></h3><p data-i18n="pr.4.d"></p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ZONE (3D map) ============ -->
+    <section class="section zone" id="zone">
+      <div class="container zone-grid">
+        <div class="zone-copy reveal">
+          <span class="eyebrow" data-i18n="map.eyebrow"></span>
+          <h2 data-i18n="map.title"></h2>
+          <p data-i18n="map.d"></p>
+          <a href="#contact" class="btn btn-gold"><span data-i18n="map.cta"></span><svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="map-stage reveal" id="mapStage">
+          <div class="map-3d" id="map3d"><!-- rendered by main.js --></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section faq light" id="faq">
+      <div class="container faq-wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="faq.eyebrow"></span>
+          <h2 data-i18n="faq.title"></h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item reveal"><summary><span data-i18n="faq.1.q"></span><i aria-hidden="true"></i></summary><p data-i18n="faq.1.a"></p></details>
+          <details class="faq-item reveal"><summary><span data-i18n="faq.2.q"></span><i aria-hidden="true"></i></summary><p data-i18n="faq.2.a"></p></details>
+          <details class="faq-item reveal"><summary><span data-i18n="faq.3.q"></span><i aria-hidden="true"></i></summary><p data-i18n="faq.3.a"></p></details>
+          <details class="faq-item reveal"><summary><span data-i18n="faq.4.q"></span><i aria-hidden="true"></i></summary><p data-i18n="faq.4.a"></p></details>
+          <details class="faq-item reveal"><summary><span data-i18n="faq.5.q"></span><i aria-hidden="true"></i></summary><p data-i18n="faq.5.a"></p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta-band">
+      <div class="container">
+        <div class="cta-box reveal">
+          <div class="cta-lines" aria-hidden="true"></div>
+          <div>
+            <h2 data-i18n="cta.title"></h2>
+            <p data-i18n="cta.sub"></p>
+          </div>
+          <div class="cta-actions">
+            <a href="#contact" class="btn btn-dark"><span data-i18n="cta.btn"></span><svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn-dark-line" data-phone-link href="#"><svg viewBox="0 0 24 24" class="arrow"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span data-phone></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-info reveal">
+          <span class="eyebrow" data-i18n="ct.eyebrow"></span>
+          <h2 data-i18n="ct.title"></h2>
+          <p class="muted" data-i18n="ct.sub"></p>
+          <ul class="info-list">
+            <li><span class="i-ico"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span><div><small data-i18n="ct.phone"></small><a data-phone-link href="#"><span data-phone></span></a></div></li>
+            <li><span class="i-ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><div><small data-i18n="ct.email"></small><a data-email-link href="#"><span data-email></span></a></div></li>
+            <li><span class="i-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/></svg></span><div><small data-i18n="ct.zone"></small><span data-i18n="ct.zonev"></span></div></li>
+          </ul>
+          <div class="social-block">
+            <small data-i18n="ct.follow"></small>
+            <div class="social" data-social></div>
+          </div>
+        </div>
+
+        <form class="form reveal" id="quoteForm" novalidate>
+          <fieldset class="seg">
+            <legend data-i18n="f.type"></legend>
+            <label><input type="radio" name="type" value="a" checked /><span data-i18n="f.type.a"></span></label>
+            <label><input type="radio" name="type" value="b" /><span data-i18n="f.type.b"></span></label>
+            <label><input type="radio" name="type" value="c" /><span data-i18n="f.type.c"></span></label>
+          </fieldset>
+          <div class="row2">
+            <label><span data-i18n="f.name"></span><input name="name" autocomplete="name" required /></label>
+            <label><span data-i18n="f.phone"></span><input name="tel" type="tel" autocomplete="tel" /></label>
+          </div>
+          <div class="row2">
+            <label><span data-i18n="f.email"></span><input name="email" type="email" autocomplete="email" required /></label>
+            <label><span data-i18n="f.city"></span><input name="city" autocomplete="address-level2" /></label>
+          </div>
+          <label><span data-i18n="f.service"></span><select name="service" id="serviceSelect"></select></label>
+          <label><span data-i18n="f.msg"></span><textarea name="message" rows="4" required data-i18n-ph="f.msgph"></textarea></label>
+          <button class="btn btn-gold btn-block" type="submit"><span data-i18n="f.send"></span><svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="form-note" id="formNote" data-i18n="f.note"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="#top" class="brand"><img src="assets/img/renova-mm-icon-dark.svg" alt="" width="46" height="34" /><span class="wordmark">RENOVA <b>MM</b></span></a>
+      <p class="muted" data-i18n="ft.tag"></p>
+      <div class="social" data-social></div>
+      <div class="footer-links">
+        <a href="#" data-i18n="ft.legal"></a>
+        <a href="#" data-i18n="ft.privacy"></a>
+      </div>
+      <p class="copy">© <span id="year"></span> RENOVA MM. <span data-i18n="ft.rights"></span></p>
+    </div>
+  </footer>
+
+  <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path class="wa-bubble" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.7l4.8-1.3A9.8 9.8 0 1 0 12 2.2z"/><path class="wa-phone" d="M8.6 7.3c.2-.4.4-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.5.7c-.1.2-.2.3 0 .6.5.9 1.2 1.6 2 2.1.3.2.5.1.6 0l.7-.8c.2-.2.3-.2.6-.1l1.8.9c.3.1.4.2.4.4 0 .6-.2 1.3-.7 1.7-.6.5-1.5.7-2.6.3a10 10 0 0 1-5-4.4c-.7-1.2-.6-2.4.1-3z"/></svg>
+    <span class="wa-tip" data-i18n="wa.label"></span>
+  </a>
+
+  <script src="js/config.js?v=13"></script>
+  <script src="js/i18n.js?v=13"></script>
+  <script src="js/main.js?v=13"></script>
+  <script type="module" src="js/scene.js?v=13"></script>
+</body>
+</html>

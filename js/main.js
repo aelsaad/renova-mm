@@ -47,87 +47,32 @@
   renderSocial();
 
   /* ================= Language ================= */
-  let lang = "fr";
+  // Each language is its own static page (/ and /en/), built by tools/build.py.
+  const lang = window.I18N[document.documentElement.lang] ? document.documentElement.lang : "fr";
   const t = (k) => {
     const d = window.I18N[lang];
     return d[k] != null ? d[k] : window.I18N.fr[k];
   };
-  function readLang() { try { return localStorage.getItem("renova-lang"); } catch (e) { return null; } }
-  function saveLang(l) { try { localStorage.setItem("renova-lang", l); } catch (e) { /* private mode */ } }
-
-  function setLang(l) {
-    lang = window.I18N[l] ? l : "fr";
-    document.documentElement.lang = lang;
-    document.title = t("meta.title");
-    $$("[data-i18n]").forEach((el) => { el.textContent = t(el.dataset.i18n); });
-    $$("[data-i18n-ph]").forEach((el) => { el.placeholder = t(el.dataset.i18nPh); });
-    $$(".lang button").forEach((b) => b.classList.toggle("active", b.dataset.lang === lang));
-    renderServices();
-    renderServiceSelect();
-    renderCarousel();
-    saveLang(lang);
-  }
-
-  /* ================= Services ================= */
-  const ICONS = [
-    '<path d="m15 12-8.4 8.4a2.1 2.1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.9-1.9a2 2 0 0 1-.6-1.4V7l-2.3-2.3a6 6 0 0 0-4.2-1.7H9l.9.8A6.2 6.2 0 0 1 12 8.4V10l2 2h1.2a2 2 0 0 1 1.4.6l1.9 1.9"/>',
-    '<path d="M11 21.7a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7z"/><path d="M12 22V12"/><path d="m3.3 7 7.7 4.7a2 2 0 0 0 2 0L20.7 7"/><path d="m7.5 4.3 9 5.1"/>',
-    '<rect x="4" y="3" width="16" height="16" rx="1.5"/><path d="M12 3v16M10 10v2M14 10v2M6 19v2M18 19v2"/>',
-    '<path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.4 2.4 0 0 1 0-3.4l2.6-2.6a2.4 2.4 0 0 1 3.4 0z"/><path d="m14.5 12.5 2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2"/>',
-    '<path d="M12 2.7s6 6.2 6 11.3a6 6 0 0 1-12 0c0-5.1 6-11.3 6-11.3z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/>',
-    '<path d="M12 22v-5M9 8V2M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8z"/>',
-    '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6M10 22h4"/>'
-  ];
-
-  function renderServices() {
-    const grid = $("#svcGrid");
-    const list = t("services");
-    grid.innerHTML = list.map((s, i) => `
-      <article class="svc tilt reveal">
-        <div class="svc-ico"><svg viewBox="0 0 24 24">${ICONS[i]}</svg></div>
-        <h3>${s.t}</h3>
-        <ul>${s.items.map((it) => `<li>${it}</li>`).join("")}</ul>
-      </article>`).join("") + `
-      <article class="svc more tilt reveal">
-        <div><h3>${t("svc.more.t")}</h3><p>${t("svc.more.d")}</p></div>
-        <a href="#contact" class="btn btn-gold btn-sm">${t("svc.more.b")}<svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </article>`;
-    $$(".reveal", grid).forEach((el, i) => {
-      el.style.transitionDelay = (i % 4) * 0.08 + "s";
-      if (grid.dataset.seen) el.classList.add("in"); else revealIO.observe(el);
-    });
-  }
-
-  function renderServiceSelect() {
-    const sel = $("#serviceSelect");
-    const keep = sel.selectedIndex;
-    sel.innerHTML = `<option value="">${t("f.choose")}</option>` +
-      t("services").map((s) => `<option>${s.t}</option>`).join("") +
-      `<option>${t("f.other")}</option>`;
-    if (keep > 0) sel.selectedIndex = keep;
-  }
 
   /* ================= Reveal ================= */
   const revealIO = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (!e.isIntersecting) return;
       e.target.classList.add("in");
-      const grid = e.target.closest("#svcGrid");
-      if (grid) grid.dataset.seen = "1";
       revealIO.unobserve(e.target);
     });
   }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
 
   function setupReveal() {
-    [".who-grid", ".steps", ".promise-list"].forEach((g) => {
+    [".who-grid", ".steps", ".promise-list", ".faq-list", ".sp-items"].forEach((g) => {
       $$(g + " .reveal").forEach((el, i) => { el.style.transitionDelay = i * 0.1 + "s"; });
     });
+    $$(".svc-grid .reveal").forEach((el, i) => { el.style.transitionDelay = (i % 4) * 0.08 + "s"; });
     $$(".reveal").forEach((el) => {
-      if (el.closest(".hero")) return;
-      if (!el.closest("#svcGrid")) revealIO.observe(el);
+      if (!el.closest(".hero, .sp-hero")) revealIO.observe(el);
     });
     // hero: reveal immediately with a stagger
-    $$(".hero .reveal").forEach((el, i) => {
+    $$(".hero .reveal, .sp-hero .reveal").forEach((el, i) => {
       el.style.transitionDelay = 0.15 + i * 0.12 + "s";
       requestAnimationFrame(() => el.classList.add("in"));
     });
@@ -166,18 +111,17 @@
   const stage = $("#carouselStage");
   const ring = $("#carousel");
 
-  function renderCarousel() {
-    const photos = CFG.gallery || [];
-    if (!photos.length) { $("#work").style.display = "none"; return; }
-    if (!car.items.length) {
-      ring.innerHTML = photos.map((p) => `<figure class="car-item"><img src="${p.src}" alt="" loading="lazy" /><span></span></figure>`).join("");
-      car.items = $$(".car-item", ring);
+  function setupCarousel() {
+    if (!ring) return;
+    if (!$(".car-item", ring)) {
+      const photos = CFG.gallery || [];
+      if (!photos.length) { const w = $("#work"); if (w) w.style.display = "none"; return; }
+      ring.innerHTML = photos.map((p) => {
+        const cap = p[lang] || p.fr;
+        return `<figure class="car-item"><img src="${p.src}" alt="${cap}" loading="lazy" /><figcaption>${cap}</figcaption></figure>`;
+      }).join("");
     }
-    car.items.forEach((el, i) => {
-      const cap = photos[i][lang] || photos[i].fr;
-      el.querySelector("span").textContent = cap;
-      el.querySelector("img").alt = cap;
-    });
+    car.items = $$(".car-item", ring);
     layoutCarousel();
   }
 
@@ -203,11 +147,10 @@
       const k = Math.max(0, 1 - a / 180);
       el.style.filter = `brightness(${0.35 + 0.65 * k * k})`;
     });
-    const photos = CFG.gallery || [];
     const cap = $("#carCaption");
-    if (photos[front] && car.front !== front + lang) {
-      car.front = front + lang;
-      cap.textContent = photos[front][lang] || photos[front].fr;
+    if (cap && car.front !== front) {
+      car.front = front;
+      cap.textContent = car.items[front].querySelector("figcaption").textContent;
     }
     return n;
   }
@@ -322,14 +265,17 @@
   const nav = $("#nav");
   const burger = $("#burger");
   const links = $("#navLinks");
-  burger.addEventListener("click", () => { burger.classList.toggle("open"); links.classList.toggle("open"); });
-  $$("a", links).forEach((a) => a.addEventListener("click", () => { burger.classList.remove("open"); links.classList.remove("open"); }));
-  const onScroll = () => nav.classList.toggle("scrolled", scrollY > 30);
+  if (burger && links) {
+    burger.addEventListener("click", () => { burger.classList.toggle("open"); links.classList.toggle("open"); });
+    $$("a", links).forEach((a) => a.addEventListener("click", () => { burger.classList.remove("open"); links.classList.remove("open"); }));
+  }
+  const onScroll = () => nav && nav.classList.toggle("scrolled", scrollY > 30);
   addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
   /* ================= Form → email ================= */
-  $("#quoteForm").addEventListener("submit", (e) => {
+  const form = $("#quoteForm");
+  if (form) form.addEventListener("submit", (e) => {
     e.preventDefault();
     const f = e.target;
     const name = f.name.value.trim();
@@ -360,14 +306,12 @@
     location.href = `mailto:${CFG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
   });
 
-  $("#year").textContent = new Date().getFullYear();
+  $$("#year").forEach((el) => { el.textContent = new Date().getFullYear(); });
 
   /* ================= Boot ================= */
   setupReveal();
   setupMap();
-  const urlLang = new URLSearchParams(location.search).get("lang");
-  setLang(urlLang || readLang() || "fr");
-  $$(".lang button").forEach((b) => b.addEventListener("click", () => setLang(b.dataset.lang)));
+  setupCarousel();
 
   let carVisible = false;
   if (stage) new IntersectionObserver((en) => { carVisible = en[0].isIntersecting; }).observe(stage);
