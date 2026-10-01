@@ -365,21 +365,23 @@ def service_main(lang, idx, home_soup):
       <div class="container">
         <div class="section-head reveal"><h2>{T(lang, "sp.others")}</h2></div>
         <div class="others reveal">{others}</div>
+        <div class="sp-cta reveal">
+          <a {page_link(home, "contact")} class="btn btn-gold"><span>{T(lang, "cta.btn")}</span>{ARROW}</a>
+          <a class="btn btn-line" data-phone-link href="tel:{tel}">{PHONE}<span data-phone>{CFG.get("phone", "")}</span></a>
+        </div>
       </div>
     </section>
   </main>"""
     main = frag(html).find("main")
-    # reuse the home page's "how it works", "promise" and CTA sections
+    # reuse the home page's "how it works" and "promise" sections
     how = copy.copy(home_soup.find(id="how"))
     promise = copy.copy(home_soup.find(id="promise"))
     for cube in promise.select(".cube-scene"):
         cube.decompose()
     promise.find("h2").string = T(lang, "sp.why")
-    cta = copy.copy(home_soup.select_one("section.cta-band"))
     sections = main.find_all("section", recursive=False)
     sections[1].insert_after(how)
     how.insert_after(promise)
-    sections[2].insert_after(cta)
     return main
 
 
