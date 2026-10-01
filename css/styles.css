@@ -369,22 +369,22 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 
 /* ---------- Reviews (3D carousel of cards) ---------- */
 .reviews { overflow: hidden; }
-.reviews-stage { height: 500px; }
-.reviews-stage .carousel { width: 320px; height: 340px; margin-left: -160px; }
+.reviews-stage { height: 580px; }
+.reviews-stage .carousel { width: 380px; height: 400px; margin-left: -190px; }
 .car-item.review {
-  display: flex; flex-direction: column; gap: 14px; padding: 28px 26px; background: #fff; color: var(--char);
+  display: flex; flex-direction: column; gap: 16px; padding: 34px 32px; background: #fff; color: var(--char);
   border: 1px solid rgba(39,42,45,.08); box-shadow: 0 30px 60px -36px rgba(39,42,45,.45);
   -webkit-box-reflect: unset;
 }
 .car-item.review::after { display: none; }
 .review .stars { display: flex; gap: 3px; color: var(--gold); }
-.review .stars svg { width: 18px; height: 18px; fill: currentColor; stroke: none; }
-.review blockquote { margin: 0; flex: 1; font-size: 15.5px; line-height: 1.6; color: #44494e; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 7; }
+.review .stars svg { width: 21px; height: 21px; fill: currentColor; stroke: none; }
+.review blockquote { margin: 0; flex: 1; font-size: 17px; line-height: 1.6; color: #44494e; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 7; }
 .review blockquote::before { content: "“"; display: block; font: 800 44px/0.6 var(--f-head); color: var(--gold); margin: 10px 0 4px; }
 .review figcaption { position: static; display: grid; gap: 2px; padding-top: 14px; border-top: 1px solid rgba(39,42,45,.08); }
 .review figcaption::before { display: none; }
-.review figcaption b { font: 700 16px var(--f-head); color: var(--char); }
-.review figcaption span { font-size: 13px; color: var(--stone); }
+.review figcaption b { font: 700 17.5px var(--f-head); color: var(--char); }
+.review figcaption span { font-size: 14px; color: var(--stone); }
 .light .carousel-nav button { border-color: rgba(39,42,45,.18); background: #fff; color: var(--char); }
 .light .carousel-nav button:hover { background: var(--grad-gold); color: #17130a; border-color: transparent; }
 .light .carousel-caption { color: var(--gold-ink); }
@@ -502,8 +502,9 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
   .fb3 { bottom: 4%; left: 4%; }
   .carousel-stage { height: 480px; }
   .carousel { width: 230px; height: 310px; margin-left: -115px; }
-  .reviews-stage { height: 470px; }
-  .reviews-stage .carousel { width: 270px; height: 340px; margin-left: -135px; }
+  .reviews-stage { height: 540px; }
+  .reviews-stage .carousel { width: 295px; height: 380px; margin-left: -147px; }
+  .car-item.review { padding: 28px 24px; }
   .form { padding: 24px; }
   .footer-inner { justify-content: center; text-align: center; }
   .footer .social { justify-content: center; }
