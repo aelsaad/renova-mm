@@ -134,6 +134,9 @@ def frag(html):
 
 
 # ------------------------------------------------------------------ structured data
+AREA_SERVED = [{"@type": "City", "name": "Bagnolet"}, {"@type": "City", "name": "Paris"},
+               {"@type": "AdministrativeArea", "name": "Île-de-France"}]
+
 def business_ld(lang):
     same_as = [u for k, u in (CFG.get("social") or {}).items() if isinstance(u, str) and u.startswith("http")]
     return {
@@ -147,8 +150,8 @@ def business_ld(lang):
         "description": T(lang, "meta.desc"),
         "telephone": CFG.get("phone"),
         "email": CFG.get("email"),
-        "address": {"@type": "PostalAddress", "addressLocality": "Paris", "addressRegion": "Île-de-France", "addressCountry": "FR"},
-        "areaServed": [{"@type": "City", "name": "Paris"}, {"@type": "AdministrativeArea", "name": "Île-de-France"}],
+        "address": {"@type": "PostalAddress", "addressLocality": "Bagnolet", "postalCode": "93170", "addressRegion": "Île-de-France", "addressCountry": "FR"},
+        "areaServed": AREA_SERVED,
         "knowsLanguage": ["fr", "en"],
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
@@ -184,7 +187,7 @@ def service_ld(lang, s):
             "description": s["intro"],
             "url": url,
             "provider": {"@id": SITE + "#business", "@type": "HomeAndConstructionBusiness", "name": "RENOVA MM", "telephone": CFG.get("phone")},
-            "areaServed": [{"@type": "City", "name": "Paris"}, {"@type": "AdministrativeArea", "name": "Île-de-France"}],
+            "areaServed": AREA_SERVED,
         },
         {
             "@context": "https://schema.org",

@@ -2,7 +2,7 @@
 window.I18N = {
   fr: {
     "meta.title": "Bricoleur à domicile à Paris · Petits travaux | RENOVA MM",
-    "meta.desc": "Petits travaux à Paris et en Île-de-France : montage de meubles, plomberie, électricité, éclairage, réparations. Professionnels qualifiés, devis gratuit.",
+    "meta.desc": "Petits travaux à Bagnolet, Paris et en Île-de-France : montage de meubles, plomberie, électricité, éclairage, réparations. Professionnels qualifiés, devis gratuit.",
     "meta.ogalt": "RENOVA MM — bricolage et petits travaux à Paris",
     "nav.services": "Services",
     "nav.who": "Pour qui",
@@ -80,8 +80,8 @@ window.I18N = {
     "pr.4.d": "Un seul contact pour tous vos petits travaux, du devis au suivi.",
 
     "map.eyebrow": "Zone d'intervention",
-    "map.title": "Paris & Île-de-France",
-    "map.d": "Nous intervenons dans les 20 arrondissements de Paris et dans toute l'Île-de-France : Hauts-de-Seine, Seine-Saint-Denis, Val-de-Marne, Yvelines, Essonne, Val-d'Oise et Seine-et-Marne. Pour les entreprises et les hôtels, nous nous déplaçons aussi partout en France.",
+    "map.title": "Bagnolet, Paris & Île-de-France",
+    "map.d": "Basés à Bagnolet, aux portes de Paris, nous intervenons dans les 20 arrondissements de Paris et dans toute l'Île-de-France : Seine-Saint-Denis, Hauts-de-Seine, Val-de-Marne, Yvelines, Essonne, Val-d'Oise et Seine-et-Marne. Pour les entreprises et les hôtels, nous nous déplaçons aussi partout en France.",
     "map.cta": "Vérifier ma ville",
 
     "cta.title": "Un petit travail à faire ?",
@@ -94,7 +94,7 @@ window.I18N = {
     "ct.phone": "Téléphone",
     "ct.email": "E-mail",
     "ct.zone": "Zone",
-    "ct.zonev": "Paris & Île-de-France",
+    "ct.zonev": "Bagnolet, Paris & Île-de-France",
     "ct.follow": "Suivez-nous",
     "wa.label": "Écrivez-nous sur WhatsApp",
     "f.type": "Vous êtes",
@@ -115,7 +115,7 @@ window.I18N = {
     "f.err": "Merci d'indiquer votre nom, un e-mail valide et votre demande.",
     "f.subject": "Demande de devis",
 
-    "ft.tag": "Bricolage, maintenance et aménagement à Paris et en Île-de-France.",
+    "ft.tag": "Bricolage, maintenance et aménagement à Bagnolet, Paris et en Île-de-France.",
     "ft.legal": "Mentions légales",
     "ft.privacy": "Politique de confidentialité",
     "faq.eyebrow": "Questions fréquentes",
@@ -125,7 +125,7 @@ window.I18N = {
     "faq.2.q": "Le devis est-il gratuit ?",
     "faq.2.a": "Oui. Vous recevez un devis clair et gratuit, sans engagement, avant toute intervention. Pas de frais cachés.",
     "faq.3.q": "Dans quelles villes intervenez-vous ?",
-    "faq.3.a": "Dans les 20 arrondissements de Paris et dans toute l'Île-de-France (92, 93, 94, 78, 91, 95 et 77). Pour les entreprises et les hôtels, nous intervenons aussi partout en France.",
+    "faq.3.a": "Nous sommes basés à Bagnolet (93), aux portes de Paris. Nous intervenons dans les 20 arrondissements de Paris et dans toute l'Île-de-France (93, 92, 94, 78, 91, 95 et 77). Pour les entreprises et les hôtels, nous intervenons aussi partout en France.",
     "faq.4.q": "Travaillez-vous pour les entreprises et les hôtels ?",
     "faq.4.a": "Oui. Nous assurons la maintenance courante des bureaux et des commerces, et l'aménagement des chambres d'hôtel de A à Z : réception des livraisons, montage du mobilier, pose des accessoires et de la décoration.",
     "faq.5.q": "Comment demander une intervention ?",
@@ -140,7 +140,7 @@ window.I18N = {
 
   en: {
     "meta.title": "Handyman in Paris · Small home repairs | RENOVA MM",
-    "meta.desc": "Small jobs in Paris & Île-de-France: furniture assembly, plumbing, electrical, lighting and repairs. Qualified professionals, free quote.",
+    "meta.desc": "Small jobs in Bagnolet, Paris & Île-de-France: furniture assembly, plumbing, electrical, lighting and repairs. Qualified professionals, free quote.",
     "meta.ogalt": "RENOVA MM — handyman and small jobs in Paris",
     "nav.services": "Services",
     "nav.who": "Who we help",
@@ -218,8 +218,8 @@ window.I18N = {
     "pr.4.d": "A single contact for all your small jobs, from quote to follow-up.",
 
     "map.eyebrow": "Where we work",
-    "map.title": "Paris & Île-de-France",
-    "map.d": "We work in all 20 arrondissements of Paris and across Île-de-France: Hauts-de-Seine, Seine-Saint-Denis, Val-de-Marne, Yvelines, Essonne, Val-d'Oise and Seine-et-Marne. For businesses and hotels we also travel all over France.",
+    "map.title": "Bagnolet, Paris & Île-de-France",
+    "map.d": "Based in Bagnolet, right next to Paris, we work in all 20 arrondissements of Paris and across Île-de-France: Seine-Saint-Denis, Hauts-de-Seine, Val-de-Marne, Yvelines, Essonne, Val-d'Oise and Seine-et-Marne. For businesses and hotels we also travel all over France.",
     "map.cta": "Check my town",
 
     "cta.title": "Got a small job to do?",
@@ -232,7 +232,7 @@ window.I18N = {
     "ct.phone": "Phone",
     "ct.email": "Email",
     "ct.zone": "Area",
-    "ct.zonev": "Paris & Île-de-France",
+    "ct.zonev": "Bagnolet, Paris & Île-de-France",
     "ct.follow": "Follow us",
     "wa.label": "Message us on WhatsApp",
     "f.type": "You are",
@@ -253,7 +253,7 @@ window.I18N = {
     "f.err": "Please enter your name, a valid email and your request.",
     "f.subject": "Quote request",
 
-    "ft.tag": "Handyman, maintenance and fit-out services in Paris and Île-de-France.",
+    "ft.tag": "Handyman, maintenance and fit-out services in Bagnolet, Paris and Île-de-France.",
     "ft.legal": "Legal notice",
     "ft.privacy": "Privacy policy",
     "faq.eyebrow": "FAQ",
@@ -263,7 +263,7 @@ window.I18N = {
     "faq.2.q": "Is the quote free?",
     "faq.2.a": "Yes. You get a clear, free quote with no obligation before any work starts. No hidden costs.",
     "faq.3.q": "Which areas do you cover?",
-    "faq.3.a": "All 20 arrondissements of Paris and the whole of Île-de-France (92, 93, 94, 78, 91, 95 and 77). For businesses and hotels we also work all over France.",
+    "faq.3.a": "We are based in Bagnolet (93), right next to Paris. We work in all 20 arrondissements of Paris and across Île-de-France (93, 92, 94, 78, 91, 95 and 77). For businesses and hotels we also work all over France.",
     "faq.4.q": "Do you work for businesses and hotels?",
     "faq.4.a": "Yes. We handle routine maintenance for offices and shops, and fit out hotel rooms from A to Z: receiving deliveries, assembling furniture, fitting accessories and setting up decor.",
     "faq.5.q": "How do I book a job?",
