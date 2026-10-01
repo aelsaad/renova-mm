@@ -128,6 +128,8 @@ STAR = '<svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L
 def reviews_html(lang):
     out = []
     for r in CFG.get("reviews") or []:
+        if r.get("placeholder") and LISTED:
+            continue  # never publish placeholder cards once the site is listed on Google
         rating = max(1, min(5, int(r.get("rating", 5))))
         text = (r.get("text") or {}).get(lang) or (r.get("text") or {}).get("fr", "")
         service = (r.get("service") or {}).get(lang) or (r.get("service") or {}).get("fr", "")

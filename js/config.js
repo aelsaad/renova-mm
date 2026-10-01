@@ -31,7 +31,19 @@ window.RENOVA = {
        service: { fr: "Montage de meubles", en: "Furniture assembly" },
        text: { fr: "Texte de l'avis…", en: "Review text…" } },
      Then run tools/build.py. */
-  reviews: [],
+  /* placeholder: true = layout preview only. These cards are dropped automatically when listed is true. */
+  reviews: [
+    { name: "Test", city: "Test", rating: 5, placeholder: true,
+      service: { fr: "Test", en: "Test" }, text: { fr: "test test test", en: "test test test" } },
+    { name: "Test", city: "Test", rating: 5, placeholder: true,
+      service: { fr: "Test", en: "Test" }, text: { fr: "test test test", en: "test test test" } },
+    { name: "Test", city: "Test", rating: 5, placeholder: true,
+      service: { fr: "Test", en: "Test" }, text: { fr: "test test test", en: "test test test" } },
+    { name: "Test", city: "Test", rating: 5, placeholder: true,
+      service: { fr: "Test", en: "Test" }, text: { fr: "test test test", en: "test test test" } },
+    { name: "Test", city: "Test", rating: 5, placeholder: true,
+      service: { fr: "Test", en: "Test" }, text: { fr: "test test test", en: "test test test" } }
+  ],
 
   /* "Nos réalisations" 3D carousel — files live in assets/photos/ */
   gallery: [
