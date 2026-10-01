@@ -5,6 +5,9 @@ window.RENOVA = {
   siteUrl: "https://aelsaad.github.io/renova-mm/",
   /* false = hidden from Google (noindex). Set to true at the official launch, then run tools/build.py. */
   listed: false,
+  /* Visitor statistics: paste the token from Cloudflare → Web Analytics (snippet "token": "…"),
+     then run tools/build.py. Empty = no statistics. Cookie-free, so no cookie banner is needed. */
+  cloudflareAnalyticsToken: "",
 
   phone: "+33695010383",
   email: "info@renovamm.fr",

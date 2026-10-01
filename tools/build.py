@@ -280,6 +280,14 @@ def base_soup(lang):
             a["aria-current"] = "true"
         elif a.has_attr("aria-current"):
             del a["aria-current"]
+    # visitor statistics (Cloudflare Web Analytics, cookie-free) — only when a token is set
+    token = (CFG.get("cloudflareAnalyticsToken") or "").strip()
+    if token:
+        beacon = soup.new_tag("script", src="https://static.cloudflareinsights.com/beacon.min.js")
+        beacon["defer"] = ""
+        beacon["data-cf-beacon"] = json.dumps({"token": token})
+        soup.body.append(beacon)
+        soup.body.append("\n")
     # cache-busting versions for our own CSS/JS
     for el in soup.select('link[rel="stylesheet"][href^="css/"], script[src^="js/"]'):
         attr = "href" if el.name == "link" else "src"
