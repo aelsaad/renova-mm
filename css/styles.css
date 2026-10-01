@@ -316,7 +316,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 
 /* ---------- CTA ---------- */
 .cta-band { padding: 0 0 20px; background: var(--night); }
-.faq + .cta-band { padding-top: 64px; } /* after the light FAQ: give the gold box dark space above */
+.faq + .cta-band { padding-top: 28px; } /* after the light FAQ: give the gold box dark space above */
 .cta-box { position: relative; overflow: hidden; border-radius: 30px; padding: 56px 60px; display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; background: var(--grad-gold); color: var(--night); }
 .cta-box h2 { font-size: clamp(28px, 3.6vw, 44px); font-weight: 800; position: relative; }
 .cta-box p { font-size: 18px; margin-top: 8px; color: #3a2c10; position: relative; }
@@ -502,7 +502,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
   .carousel-stage { height: 480px; }
   .carousel { width: 230px; height: 310px; margin-left: -115px; }
   .cta-box { padding: 40px 26px; }
-  .faq + .cta-band { padding-top: 44px; }
+  .faq + .cta-band { padding-top: 20px; }
   .form { padding: 24px; }
   .footer-inner { justify-content: center; text-align: center; }
   .footer .social { justify-content: center; }
