@@ -283,8 +283,7 @@ def base_soup(lang):
     # visitor statistics (Cloudflare Web Analytics, cookie-free) — only when a token is set
     token = (CFG.get("cloudflareAnalyticsToken") or "").strip()
     if token:
-        beacon = soup.new_tag("script", src="https://static.cloudflareinsights.com/beacon.min.js")
-        beacon["defer"] = ""
+        beacon = soup.new_tag("script", type="module", src="https://static.cloudflareinsights.com/beacon.min.js")
         beacon["data-cf-beacon"] = json.dumps({"token": token})
         soup.body.append(beacon)
         soup.body.append("\n")

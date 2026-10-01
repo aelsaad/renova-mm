@@ -7,7 +7,7 @@ window.RENOVA = {
   listed: false,
   /* Visitor statistics: paste the token from Cloudflare → Web Analytics (snippet "token": "…"),
      then run tools/build.py. Empty = no statistics. Cookie-free, so no cookie banner is needed. */
-  cloudflareAnalyticsToken: "",
+  cloudflareAnalyticsToken: "c92455e8f83347b7a79412355ab6c3ba",
 
   phone: "+33695010383",
   email: "info@renovamm.fr",
