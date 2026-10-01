@@ -34,7 +34,7 @@
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Montserrat:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
-  <link href="../css/styles.css?v=720fd2fa" rel="stylesheet"/>
+  <link href="../css/styles.css?v=83a0cf93" rel="stylesheet"/>
   <script type="importmap">
     { "imports": {
         "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
@@ -282,8 +282,16 @@
 </div>
 <label><span data-i18n="f.service">Service</span><select id="serviceSelect" name="service"><option value="">Choose a service</option><option>Repairs</option><option>Clearance</option><option>Assembly</option><option>Installation</option><option>Plumbing</option><option>Electrical</option><option>Lighting</option><option>Other</option></select></label>
 <label><span data-i18n="f.msg">Your request</span><textarea data-i18n-ph="f.msgph" name="message" placeholder="Describe the work you need…" required="" rows="4"></textarea></label>
-<button class="btn btn-gold btn-block" type="submit"><span data-i18n="f.send">Send my request</span><svg class="arrow" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
-<p class="form-note" data-i18n="f.note" id="formNote">The form opens your email app with your request filled in.</p>
+<!-- spam trap: invisible to people, bots fill it in -->
+<input aria-hidden="true" autocomplete="off" class="hp" name="botcheck" tabindex="-1" type="checkbox"/>
+<button class="btn btn-gold btn-block" id="formSend" type="submit"><span data-i18n="f.send">Send my request</span><svg class="arrow" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+<p class="form-note" data-i18n="f.note" id="formNote">Your request is sent to us directly by email.</p>
+<div class="form-success" hidden="" id="formSuccess">
+<span class="ok-ico"><svg viewbox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span>
+<h3 data-i18n="f.ok.t">Thank you, your request has been sent!</h3>
+<p data-i18n="f.ok.d">We'll get back to you very soon. For anything urgent, call us or message us on WhatsApp.</p>
+<button class="btn btn-line btn-sm" data-i18n="f.ok.again" id="formAgain" type="button">Send another request</button>
+</div>
 </form>
 </div>
 </section>
@@ -304,9 +312,9 @@
 <svg viewbox="0 0 24 24"><path class="wa-bubble" d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.7l4.8-1.3A9.8 9.8 0 1 0 12 2.2z"></path><path class="wa-phone" d="M8.6 7.3c.2-.4.4-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.5.7c-.1.2-.2.3 0 .6.5.9 1.2 1.6 2 2.1.3.2.5.1.6 0l.7-.8c.2-.2.3-.2.6-.1l1.8.9c.3.1.4.2.4.4 0 .6-.2 1.3-.7 1.7-.6.5-1.5.7-2.6.3a10 10 0 0 1-5-4.4c-.7-1.2-.6-2.4.1-3z"></path></svg>
 <span class="wa-tip" data-i18n="wa.label">Message us on WhatsApp</span>
 </a>
-<script src="../js/config.js?v=faa975df"></script>
-<script src="../js/i18n.js?v=059736e5"></script>
-<script src="../js/main.js?v=41465ee7"></script>
+<script src="../js/config.js?v=b7b788c6"></script>
+<script src="../js/i18n.js?v=4321848b"></script>
+<script src="../js/main.js?v=95a787c0"></script>
 <script src="../js/scene.js?v=902f8846" type="module"></script>
 <script data-cf-beacon='{"token": "c92455e8f83347b7a79412355ab6c3ba"}' src="https://static.cloudflareinsights.com/beacon.min.js" type="module"></script>
 </body>

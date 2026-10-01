@@ -7,6 +7,9 @@ window.RENOVA = {
   listed: false,
   /* Visitor statistics: paste the token from Cloudflare → Web Analytics (snippet "token": "…"),
      then run tools/build.py. Empty = no statistics. Cookie-free, so no cookie banner is needed. */
+  /* Contact form: Web3Forms access key — messages go to the email address the key was created with.
+     Empty = the form opens the visitor's email app instead. */
+  web3formsKey: "10ccfa85-edf2-469c-b616-8c26be1361f8",
   cloudflareAnalyticsToken: "c92455e8f83347b7a79412355ab6c3ba",
 
   phone: "+33695010383",

@@ -303,7 +303,57 @@
       msg
     ].filter((l) => l !== null);
     const subject = `${t("f.subject")} – ${service || type} – ${name}`;
-    location.href = `mailto:${CFG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+    const openMailApp = () => {
+      location.href = `mailto:${CFG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+    };
+    if (!CFG.web3formsKey) { openMailApp(); return; }
+
+    // send directly through Web3Forms → arrives by email, no email app needed
+    form.classList.add("sending");
+    const sendLabel = $("#formSend span");
+    const label = sendLabel.textContent;
+    sendLabel.textContent = t("f.sending");
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: CFG.web3formsKey,
+        subject,
+        from_name: "RENOVA MM – site web",
+        name,
+        email,
+        replyto: email,
+        [t("f.type")]: type,
+        [t("f.phone")]: tel || "–",
+        [t("f.city")]: city || "–",
+        [t("f.service")]: service || "–",
+        message: msg,
+        page: location.href,
+        botcheck: f.botcheck.checked
+      })
+    })
+      .then((r) => r.json().catch(() => ({})).then((d) => ({ ok: r.ok && d.success !== false })))
+      .then(({ ok }) => {
+        if (!ok) throw new Error("send failed");
+        form.reset();
+        $("#formSuccess").hidden = false;
+      })
+      .catch(() => {
+        note.textContent = t("f.fail");
+        note.style.color = "#e57373";
+        setTimeout(openMailApp, 1200);
+      })
+      .finally(() => {
+        form.classList.remove("sending");
+        sendLabel.textContent = label;
+      });
+  });
+  const again = $("#formAgain");
+  if (again) again.addEventListener("click", () => {
+    $("#formSuccess").hidden = true;
+    const note = $("#formNote");
+    note.textContent = t("f.note");
+    note.style.color = "";
   });
 
   $$("#year").forEach((el) => { el.textContent = new Date().getFullYear(); });

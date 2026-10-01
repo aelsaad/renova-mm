@@ -272,8 +272,16 @@
           </div>
           <label><span data-i18n="f.service"></span><select name="service" id="serviceSelect"></select></label>
           <label><span data-i18n="f.msg"></span><textarea name="message" rows="4" required data-i18n-ph="f.msgph"></textarea></label>
-          <button class="btn btn-gold btn-block" type="submit"><span data-i18n="f.send"></span><svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <!-- spam trap: invisible to people, bots fill it in -->
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <button class="btn btn-gold btn-block" type="submit" id="formSend"><span data-i18n="f.send"></span><svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           <p class="form-note" id="formNote" data-i18n="f.note"></p>
+          <div class="form-success" id="formSuccess" hidden>
+            <span class="ok-ico"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <h3 data-i18n="f.ok.t"></h3>
+            <p data-i18n="f.ok.d"></p>
+            <button type="button" class="btn btn-line btn-sm" id="formAgain" data-i18n="f.ok.again"></button>
+          </div>
         </form>
       </div>
     </section>
