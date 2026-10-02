@@ -78,6 +78,7 @@ window.I18N = {
     "pr.3.d": "Polis, ponctuels et discrets, nos intervenants laissent votre intérieur impeccable.",
     "pr.4.t": "Un interlocuteur unique",
     "pr.4.d": "Un seul contact pour tous vos petits travaux, du devis au suivi.",
+    "pr.photo.alt": "Cuisine équipée réalisée par RENOVA MM",
 
     "map.eyebrow": "Zone d'intervention",
     "map.title": "Bagnolet, Paris & Île-de-France",
@@ -214,6 +215,7 @@ window.I18N = {
     "pr.3.d": "Polite, punctual and discreet — we leave your home spotless.",
     "pr.4.t": "One point of contact",
     "pr.4.d": "A single contact for all your small jobs, from quote to follow-up.",
+    "pr.photo.alt": "Fitted kitchen by RENOVA MM",
 
     "map.eyebrow": "Where we work",
     "map.title": "Bagnolet, Paris & Île-de-France",

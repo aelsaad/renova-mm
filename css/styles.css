@@ -262,19 +262,30 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 .promise-item h3 { font-size: 18.5px; color: var(--char); margin-bottom: 6px; }
 .promise-item p { color: #5d6166; font-size: 15px; }
 
-/* CSS 3D cube */
-.cube-scene { width: 200px; height: 200px; perspective: 900px; margin: 70px 0 0 60px; }
-.cube { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; animation: spin 18s linear infinite; }
-.cube i { position: absolute; inset: 0; display: grid; place-items: center; border-radius: 22px; border: 1px solid rgba(201,154,58,.55); background: linear-gradient(145deg, #2c2f33, #17191b); box-shadow: inset 0 0 40px rgba(201,154,58,.12); }
-.cube i img { width: 70%; }
-.cube i img.tool-img { width: 96%; filter: drop-shadow(0 10px 14px rgba(0,0,0,.35)); }
-.cube .f1 { transform: translateZ(100px); }
-.cube .f2 { transform: rotateY(90deg) translateZ(100px); background: var(--grad-gold); }
-.cube .f3 { transform: rotateY(180deg) translateZ(100px); }
-.cube .f4 { transform: rotateY(-90deg) translateZ(100px); background: var(--grad-gold); }
-.cube .f5 { transform: rotateX(90deg) translateZ(100px); }
-.cube .f6 { transform: rotateX(-90deg) translateZ(100px); }
-@keyframes spin { from { transform: rotateX(-18deg) rotateY(0); } to { transform: rotateX(-18deg) rotateY(360deg); } }
+/* Promise photo: real work in a 3D-tilting frame */
+.promise-photo {
+  --rx: 0deg; --ry: 0deg;
+  position: relative; margin: 44px 0 0; max-width: 460px;
+  transform: perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d; transition: transform .25s ease-out;
+}
+.promise-photo::before {           /* gold frame offset behind the photo */
+  content: ""; position: absolute; inset: 18px -18px -18px 18px; border-radius: 30px;
+  border: 1.5px solid rgba(201,154,58,.6); transform: translateZ(-30px);
+}
+.promise-photo img {
+  position: relative; width: 100%; height: 440px; object-fit: cover; border-radius: 28px;
+  box-shadow: 0 40px 70px -40px rgba(39,42,45,.6);
+}
+.promise-badge {
+  position: absolute; left: -18px; bottom: 28px; display: flex; align-items: center; gap: 10px;
+  padding: 10px 18px 10px 10px; border-radius: 16px; transform: translateZ(40px);
+  background: rgba(20,22,24,.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  color: var(--ivory); font: 600 14.5px var(--f-head); box-shadow: 0 20px 40px -18px rgba(0,0,0,.6);
+  animation: float 6s ease-in-out infinite;
+}
+.pb-ico { width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; background: var(--grad-gold); color: #17130a; }
+.pb-ico svg { width: 17px; height: 17px; stroke-width: 2.8; }
 
 /* ---------- Zone / map ---------- */
 .zone { background: radial-gradient(60% 70% at 70% 50%, rgba(201,154,58,.1), transparent 70%), var(--night); overflow: hidden; }
@@ -493,7 +504,9 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
   .hero-visual { height: 440px; min-height: 0; order: -1; margin-bottom: -20px; }
   .who-grid, .steps { grid-template-columns: 1fr; }
   .steps::before { display: none; }
-  .cube-scene { display: none; }
+  .promise-photo { margin: 34px auto 18px; }
+  .promise-photo img { height: 360px; }
+  .promise-badge { left: 10px; bottom: 18px; }
   .sp-hero { padding: 120px 0 70px; }
   .sp-hero-grid { grid-template-columns: 1fr; }
   .sp-visual { order: -1; }

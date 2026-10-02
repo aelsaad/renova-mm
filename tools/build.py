@@ -347,6 +347,8 @@ def base_soup(lang):
         el.string = T(lang, el["data-i18n"])
     for el in soup.select("[data-i18n-ph]"):
         el["placeholder"] = T(lang, el["data-i18n-ph"])
+    for el in soup.select("[data-i18n-alt]"):
+        el["alt"] = T(lang, el["data-i18n-alt"])
     phone_digits = re.sub(r"[^\d+]", "", str(CFG.get("phone", "")))
     for el in soup.select("[data-phone]"):
         el.string = CFG.get("phone", "")
