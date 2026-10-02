@@ -52,6 +52,7 @@ window.RENOVA = {
   gallery: [
     { src: "assets/photos/cuisine-anthracite.webp", fr: "Cuisine équipée", en: "Fitted kitchen" },
     { src: "assets/photos/salle-de-bains.webp", fr: "Salle de bains", en: "Bathroom" },
+    { src: "assets/photos/wc-suspendu.webp", fr: "WC suspendu & chauffe-eau", en: "Wall-hung toilet & water heater" },
     { src: "assets/photos/cuisine-verriere.webp", fr: "Cuisine & verrière", en: "Kitchen & glass partition" },
     { src: "assets/photos/verriere-parquet.webp", fr: "Verrière & parquet", en: "Glass partition & flooring" },
     { src: "assets/photos/pose-stratifie.webp", fr: "Pose de stratifié", en: "Laminate flooring" },
