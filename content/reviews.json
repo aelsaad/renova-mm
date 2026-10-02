@@ -1,0 +1,80 @@
+[
+  {
+    "name": "aes",
+    "city": "Berlin",
+    "rating": 5,
+    "date": "2026-10-02",
+    "lang": "fr",
+    "service_fr": "",
+    "service_en": "",
+    "text_fr": "Travail soigné et professionnel, réalisé en un temps record. Équipe sympathique, efficace et toujours de bonne humeur ! Merci beaucoup pour votre excellent travail.",
+    "text_en": "Careful, professional work, completed in record time. A friendly, efficient team that's always in a good mood! Thank you so much for your excellent work.",
+    "visible": true,
+    "placeholder": false
+  },
+  {
+    "name": "Test",
+    "city": "Test",
+    "rating": 5,
+    "date": "2026-10-01",
+    "lang": "fr",
+    "service_fr": "Test",
+    "service_en": "Test",
+    "text_fr": "test test test",
+    "text_en": "test test test",
+    "visible": true,
+    "placeholder": true
+  },
+  {
+    "name": "Test",
+    "city": "Test",
+    "rating": 5,
+    "date": "2026-10-01",
+    "lang": "fr",
+    "service_fr": "Test",
+    "service_en": "Test",
+    "text_fr": "test test test",
+    "text_en": "test test test",
+    "visible": true,
+    "placeholder": true
+  },
+  {
+    "name": "Test",
+    "city": "Test",
+    "rating": 5,
+    "date": "2026-10-01",
+    "lang": "fr",
+    "service_fr": "Test",
+    "service_en": "Test",
+    "text_fr": "test test test",
+    "text_en": "test test test",
+    "visible": true,
+    "placeholder": true
+  },
+  {
+    "name": "Test",
+    "city": "Test",
+    "rating": 5,
+    "date": "2026-10-01",
+    "lang": "fr",
+    "service_fr": "Test",
+    "service_en": "Test",
+    "text_fr": "test test test",
+    "text_en": "test test test",
+    "visible": true,
+    "placeholder": true
+  },
+  {
+    "name": "Test",
+    "city": "Test",
+    "rating": 5,
+    "date": "2026-10-01",
+    "lang": "fr",
+    "service_fr": "Test",
+    "service_en": "Test",
+    "text_fr": "test test test",
+    "text_en": "test test test",
+    "visible": true,
+    "placeholder": true
+  }
+]

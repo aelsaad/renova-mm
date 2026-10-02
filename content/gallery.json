@@ -1,0 +1,57 @@
+[
+  {
+    "image": "assets/photos/cuisine-anthracite.webp",
+    "caption_fr": "Cuisine équipée",
+    "caption_en": "Fitted kitchen"
+  },
+  {
+    "image": "assets/photos/salle-de-bains.webp",
+    "caption_fr": "Salle de bains",
+    "caption_en": "Bathroom"
+  },
+  {
+    "image": "assets/photos/wc-suspendu.webp",
+    "caption_fr": "WC suspendu & chauffe-eau",
+    "caption_en": "Wall-hung toilet & water heater"
+  },
+  {
+    "image": "assets/photos/cuisine-verriere.webp",
+    "caption_fr": "Cuisine & verrière",
+    "caption_en": "Kitchen & glass partition"
+  },
+  {
+    "image": "assets/photos/verriere-parquet.webp",
+    "caption_fr": "Verrière & parquet",
+    "caption_en": "Glass partition & flooring"
+  },
+  {
+    "image": "assets/photos/pose-stratifie.webp",
+    "caption_fr": "Pose de stratifié",
+    "caption_en": "Laminate flooring"
+  },
+  {
+    "image": "assets/photos/cuisine-verte.webp",
+    "caption_fr": "Cuisine sur mesure",
+    "caption_en": "Custom kitchen"
+  },
+  {
+    "image": "assets/photos/chambre-renovee.webp",
+    "caption_fr": "Chambre rénovée",
+    "caption_en": "Renovated bedroom"
+  },
+  {
+    "image": "assets/photos/terrasse-bois.webp",
+    "caption_fr": "Terrasse bois",
+    "caption_en": "Wooden deck"
+  },
+  {
+    "image": "assets/photos/appliques-parquet.webp",
+    "caption_fr": "Appliques & parquet",
+    "caption_en": "Wall lights & flooring"
+  },
+  {
+    "image": "assets/photos/combles.webp",
+    "caption_fr": "Combles aménagés",
+    "caption_en": "Converted attic"
+  }
+]

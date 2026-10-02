@@ -4,8 +4,8 @@ Handyman, maintenance and fit-out services across France. French + English, 3D h
 
 **Live:** https://aelsaad.github.io/renova-mm/ (GitHub Pages, repo `aelsaad/renova-mm`)
 
-To update the live site: commit and `git push` — GitHub rebuilds it in about a minute.
-The site is unlisted for now (`listed: false` in `js/config.js` → `noindex` + `robots.txt` Disallow).
+To update the live site: save in the dashboard, or commit and `git push` — GitHub builds and publishes it in 1–2 minutes.
+The site is unlisted for now (`"listed": false` in `content/settings.json` → `noindex` + `robots.txt` Disallow).
 
 ## Run locally
 
@@ -15,26 +15,31 @@ python3 -m http.server 5530 --directory "/Users/ahmad/Documents/Claude Projects/
 
 Then open http://localhost:5530. (Opening `index.html` directly from Finder also works, but the 3D scene needs a server in some browsers.)
 
-## Edit content
+## Edit content — dashboard (for the site owner)
 
-The pages are **generated**: edit the sources, then run the build.
+Photos, reviews and contact details are edited in **Pages CMS**: https://app.pagescms.org
+(sign in with GitHub → repository `aelsaad/renova-mm`). Saving commits to GitHub; the workflow
+`.github/workflows/deploy.yml` then rebuilds and publishes the site in 1–2 minutes.
 
-```bash
-python3 tools/build.py
-```
+- **Galerie photos** — upload a photo (phone photos are shrunk to WebP automatically), FR/EN caption, order.
+- **Avis clients** — real reviews only, exact customer text; the 6 most recent visible ones are shown.
+  "Exemple de test" entries are hidden automatically once the site is listed.
+- **Contact & réseaux sociaux** — phone, email, Facebook/TikTok/… links (empty = hidden), WhatsApp button.
+
+## Edit content — code (developer)
 
 | What | Where |
 |---|---|
-| Phone number, email, social links, gallery photos, customer reviews (real ones only — section hidden while empty), contact-form key (Web3Forms), statistics token (Cloudflare) | `js/config.js` |
-| All texts, French + English (incl. service pages, FAQ, page titles) | `js/i18n.js` |
+| Photos, reviews, contact (same as the dashboard) | `content/gallery.json`, `content/reviews.json`, `content/contact.json` |
+| Site address, listed on Google, analytics + form keys | `content/settings.json` |
+| All texts, French + English | `js/i18n.js` |
 | Page layout (all pages) | `src/index.html` |
-| Colours, layout styles | `css/styles.css` (tokens at the top) |
-| 3D scene (house, towers, tools) | `js/scene.js` |
+| Colours, layout styles | `css/styles.css` |
+| 3D scene | `js/scene.js` |
 
-The build writes `index.html`, `en/index.html`, the 14 service pages in `services/` and `en/services/`,
-`sitemap.xml` and `robots.txt`, and adds the SEO tags (title, description, canonical, hreflang,
-Open Graph, structured data). CSS/JS cache versions are set automatically.
-Then commit and `git push` — GitHub Pages updates the live site in about a minute.
+Preview locally: `python3 tools/build.py` (needs `pip install beautifulsoup4 pillow` and node), then
+`python3 -m http.server 5530`. The generated files (`index.html`, `en/`, `services/`, `js/config.js`,
+`sitemap.xml`, `robots.txt`) are not committed — GitHub Actions builds them on every push.
 
 ## Folders
 
@@ -46,9 +51,9 @@ Then commit and `git push` — GitHub Pages updates the live site in about a min
 
 ## Before going live
 
-- Set `listed: true` in `js/config.js` (and `siteUrl` if you connect renovamm.fr), run the build, push.
+- Set `"listed": true` in `content/settings.json` (and `siteUrl` once renovamm.fr is connected), push.
 - Create a **Google Business Profile** and add the site to **Google Search Console** (submit `sitemap.xml`).
 
-- Paste the real Facebook / Instagram / TikTok / LinkedIn links in `js/config.js` (or set them to "" to hide).
+- Paste the real Facebook / TikTok links in the dashboard (Contact & réseaux sociaux), or leave them empty to hide.
 - Add the **Mentions légales** and **Politique de confidentialité** pages (required in France); footer links are in `index.html`.
 - Confirm the promises shown on the site (free quote, fast response, careful work).

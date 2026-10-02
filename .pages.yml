@@ -1,0 +1,112 @@
+# Pages CMS dashboard (https://app.pagescms.org) — what the site owner can edit.
+# Saving commits to GitHub; .github/workflows/deploy.yml then rebuilds and publishes the site.
+media:
+  input: assets/photos
+  output: assets/photos
+  categories: [image]
+
+content:
+  - name: gallery
+    label: "Galerie photos"
+    type: file
+    path: content/gallery.json
+    format: json
+    list: true
+    fields:
+      - name: image
+        label: "Photo"
+        type: image
+        required: true
+      - name: caption_fr
+        label: "Légende (français)"
+        type: string
+        required: true
+      - name: caption_en
+        label: "Légende (anglais)"
+        type: string
+
+  - name: reviews
+    label: "Avis clients"
+    type: file
+    path: content/reviews.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        label: "Prénom + initiale (ex. Sophie M.)"
+        type: string
+        required: true
+      - name: city
+        label: "Ville"
+        type: string
+      - name: rating
+        label: "Note (étoiles)"
+        type: number
+        default: 5
+        options:
+          min: 1
+          max: 5
+      - name: date
+        label: "Date de l'avis (les 6 plus récents sont affichés)"
+        type: date
+        required: true
+      - name: lang
+        label: "Langue écrite par le client"
+        type: select
+        default: fr
+        options:
+          values:
+            - { name: fr, label: "Français" }
+            - { name: en, label: "Anglais" }
+      - name: service_fr
+        label: "Service (français)"
+        type: string
+      - name: service_en
+        label: "Service (anglais)"
+        type: string
+      - name: text_fr
+        label: "Avis (français) — texte exact du client"
+        type: text
+        required: true
+      - name: text_en
+        label: "Avis (anglais) — traduction"
+        type: text
+      - name: visible
+        label: "Afficher sur le site"
+        type: boolean
+        default: true
+      - name: placeholder
+        label: "Exemple de test (masqué automatiquement au lancement)"
+        type: boolean
+        default: false
+
+  - name: contact
+    label: "Contact & réseaux sociaux"
+    type: file
+    path: content/contact.json
+    format: json
+    fields:
+      - name: phone
+        label: "Téléphone"
+        type: string
+        required: true
+      - name: email
+        label: "E-mail"
+        type: string
+        required: true
+      - name: facebook
+        label: "Lien Facebook (vide = masqué)"
+        type: string
+      - name: tiktok
+        label: "Lien TikTok (vide = masqué)"
+        type: string
+      - name: instagram
+        label: "Lien Instagram (vide = masqué)"
+        type: string
+      - name: linkedin
+        label: "Lien LinkedIn (vide = masqué)"
+        type: string
+      - name: whatsapp
+        label: "Bouton WhatsApp (utilise le numéro de téléphone)"
+        type: boolean
+        default: true
