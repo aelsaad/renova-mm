@@ -27,12 +27,15 @@ window.RENOVA = {
 
   /* Customer reviews — REAL reviews only, with the customer's consent. The section stays hidden while the list is empty.
      One entry per review, e.g.:
-     { name: "Sophie M.", city: "Bagnolet", rating: 5,
+     { name: "Sophie M.", city: "Bagnolet", rating: 5, lang: "fr",   (lang = language the customer wrote in)
        service: { fr: "Montage de meubles", en: "Furniture assembly" },
        text: { fr: "Texte de l'avis…", en: "Review text…" } },
      Then run tools/build.py. */
   /* placeholder: true = layout preview only. These cards are dropped automatically when listed is true. */
   reviews: [
+    { name: "aes", city: "Berlin", rating: 5, lang: "fr",
+      text: { fr: "Travail soigné et professionnel, réalisé en un temps record. Équipe sympathique, efficace et toujours de bonne humeur ! Merci beaucoup pour votre excellent travail.",
+              en: "Careful, professional work, completed in record time. A friendly, efficient team that's always in a good mood! Thank you so much for your excellent work." } },
     { name: "Test", city: "Test", rating: 5, placeholder: true,
       service: { fr: "Test", en: "Test" }, text: { fr: "test test test", en: "test test test" } },
     { name: "Test", city: "Test", rating: 5, placeholder: true,

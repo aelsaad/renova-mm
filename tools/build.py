@@ -125,22 +125,39 @@ def carousel_html(lang):
 STAR = '<svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3L2.8 9.5l6.4-.9z"/></svg>'
 
 
+QUOTE = '<svg class="rev-quote" viewBox="0 0 24 24"><path d="M9.5 6C6 7.4 4 10 4 13.6V18h5.6v-5.4H6.8c0-2.2 1.2-3.8 3.4-4.8zm10 0C16 7.4 14 10 14 13.6V18h5.6v-5.4h-2.8c0-2.2 1.2-3.8 3.4-4.8z"/></svg>'
+
+
+def review_list(lang):
+    return [r for r in (CFG.get("reviews") or []) if not (r.get("placeholder") and LISTED)]
+
+
+def review_card(lang, r):
+    rating = max(1, min(5, int(r.get("rating", 5))))
+    texts = r.get("text") or {}
+    text = texts.get(lang) or texts.get("fr", "")
+    service = (r.get("service") or {}).get(lang) or (r.get("service") or {}).get("fr", "")
+    meta = " · ".join(x for x in [service, r.get("city", "")] if x)
+    original = r.get("lang", "fr")
+    note = f'<em class="rev-tr">{T(lang, "rev.from." + original)}</em>' if original != lang and texts.get(lang) else ""
+    initial = (r["name"].strip()[:1] or "?").upper()
+    return (
+        f'<figure class="rev-card"><div class="rev-top"><div class="stars" role="img" aria-label="{rating}/5">{STAR * rating}</div>{QUOTE}</div>'
+        f'<blockquote>{text}</blockquote>{note}'
+        f'<figcaption><span class="rev-avatar" aria-hidden="true">{initial}</span>'
+        f'<span class="rev-who"><b>{r["name"]}</b><small>{meta}</small></span></figcaption></figure>'
+    )
+
+
 def reviews_html(lang):
-    out = []
-    for r in CFG.get("reviews") or []:
-        if r.get("placeholder") and LISTED:
-            continue  # never publish placeholder cards once the site is listed on Google
-        rating = max(1, min(5, int(r.get("rating", 5))))
-        text = (r.get("text") or {}).get(lang) or (r.get("text") or {}).get("fr", "")
-        service = (r.get("service") or {}).get(lang) or (r.get("service") or {}).get("fr", "")
-        meta = " · ".join(x for x in [service, r.get("city", "")] if x)
-        out.append(
-            f'<figure class="car-item review" data-caption="{r["name"]}">'
-            f'<div class="stars" role="img" aria-label="{rating}/5">{STAR * rating}</div>'
-            f'<blockquote>{text}</blockquote>'
-            f'<figcaption><b>{r["name"]}</b><span>{meta}</span></figcaption></figure>'
-        )
-    return "".join(out)
+    """Returns (cards_html, moving). With 3+ reviews the row is doubled for a seamless endless scroll."""
+    items = review_list(lang)
+    if not items:
+        return "", False
+    cards = "".join(review_card(lang, r) for r in items)
+    if len(items) < 3:
+        return f'<div class="rev-row">{cards}</div>', False
+    return f'<div class="rev-row">{cards}</div><div class="rev-row" aria-hidden="true">{cards}</div>', True
 
 
 def select_html(lang):
@@ -286,13 +303,17 @@ def base_soup(lang):
     ring.append(frag(carousel_html(lang)))
     reviews = soup.find(id="reviews")
     if reviews:
-        cards = reviews_html(lang)
+        cards, moving = reviews_html(lang)
         if cards:
-            ring = soup.find(id="reviewsRing")
-            ring.clear()
-            ring.append(frag(cards))
+            track = soup.find(id="reviewsTrack")
+            track.clear()
+            track.append(frag(cards))
+            view = soup.find(id="reviewsViewport")
+            view["class"] = view.get("class", []) + ["rev-marquee" if moving else "rev-static"]
+            if moving:  # ~8 s per card keeps the speed constant whatever the number of reviews
+                view["style"] = f"--rev-dur: {len(review_list(lang)) * 8}s"
         else:
-            reviews.decompose()  # no real reviews yet -> no section
+            reviews.decompose()  # no reviews yet -> no section
     sel = soup.find(id="serviceSelect")
     sel.clear()
     sel.append(frag(select_html(lang)))

@@ -115,7 +115,6 @@
     if (!items.length) return null;
     const car = { rot: 0, vel: 0, dragging: false, lastX: 0, auto: true, front: -1, visible: false };
     const caption = $(".carousel-caption", stage);
-    const fade = stage.classList.contains("reviews-stage"); // light cards: fade instead of darken
 
     function layout() {
       const n = items.length;
@@ -131,8 +130,7 @@
         const a = Math.abs(((i * car.step - car.rot) % 360 + 540) % 360 - 180);
         if (a < best) { best = a; front = i; }
         const k = Math.max(0, 1 - a / 180);
-        if (fade) el.style.opacity = (0.18 + 0.82 * k * k).toFixed(3);
-        else el.style.filter = `brightness(${0.35 + 0.65 * k * k})`;
+        el.style.filter = `brightness(${0.35 + 0.65 * k * k})`;
       });
       if (caption && car.front !== front) {
         car.front = front;
@@ -202,6 +200,13 @@
       const c = makeCarousel(stage);
       if (c) carousels.push(c);
     });
+  }
+
+  /* ================= Reviews strip: pause while touched (phones) ================= */
+  const revView = $(".rev-marquee");
+  if (revView) {
+    revView.addEventListener("touchstart", () => revView.classList.add("paused"), { passive: true });
+    revView.addEventListener("touchend", () => setTimeout(() => revView.classList.remove("paused"), 1500), { passive: true });
   }
 
   /* ================= 3D map of France ================= */
