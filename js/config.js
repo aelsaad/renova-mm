@@ -52,10 +52,13 @@ window.RENOVA = {
   gallery: [
     { src: "assets/photos/cuisine-anthracite.webp", fr: "Cuisine équipée", en: "Fitted kitchen" },
     { src: "assets/photos/salle-de-bains.webp", fr: "Salle de bains", en: "Bathroom" },
+    { src: "assets/photos/cuisine-verriere.webp", fr: "Cuisine & verrière", en: "Kitchen & glass partition" },
     { src: "assets/photos/verriere-parquet.webp", fr: "Verrière & parquet", en: "Glass partition & flooring" },
     { src: "assets/photos/pose-stratifie.webp", fr: "Pose de stratifié", en: "Laminate flooring" },
     { src: "assets/photos/cuisine-verte.webp", fr: "Cuisine sur mesure", en: "Custom kitchen" },
+    { src: "assets/photos/chambre-renovee.webp", fr: "Chambre rénovée", en: "Renovated bedroom" },
     { src: "assets/photos/terrasse-bois.webp", fr: "Terrasse bois", en: "Wooden deck" },
+    { src: "assets/photos/appliques-parquet.webp", fr: "Appliques & parquet", en: "Wall lights & flooring" },
     { src: "assets/photos/combles.webp", fr: "Combles aménagés", en: "Converted attic" }
   ]
 };
