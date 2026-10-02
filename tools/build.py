@@ -144,7 +144,7 @@ def review_card(lang, r):
     return (
         f'<figure class="rev-card"><div class="rev-top"><div class="stars" role="img" aria-label="{rating}/5">{STAR * rating}</div>{QUOTE}</div>'
         f'<blockquote>{text}</blockquote>{note}'
-        f'<figcaption><span class="rev-avatar" aria-hidden="true">{initial}<i class="rev-emoji">{r.get("emoji", "😊")}</i></span>'
+        f'<figcaption><span class="rev-avatar" aria-hidden="true">{initial}</span>'
         f'<span class="rev-who"><b>{r["name"]}</b><small>{meta}</small></span></figcaption></figure>'
     )
 
