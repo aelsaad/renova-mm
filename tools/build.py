@@ -9,6 +9,7 @@ Sources (edit these, then re-run the build):
   content/contact.json  phone, email, social links          (editable in the Pages CMS dashboard)
   content/gallery.json  gallery photos + captions           (editable in the dashboard)
   content/reviews.json  customer reviews                    (editable in the dashboard)
+  content/sections.json photo of the "Nos engagements" section (editable in the dashboard)
   content/settings.json siteUrl, listed, analytics + form keys (technical, not in the dashboard)
 
 Generates:
@@ -99,6 +100,9 @@ def load_config():
             "text": {"fr": r.get("text_fr", ""), "en": r.get("text_en", "")},
         })
     reviews.sort(key=lambda r: r["date"], reverse=True)  # newest first
+    sections = load_json("sections")
+    if sections.get("promise_photo"):
+        sections["promise_photo"] = optimise_photo(sections["promise_photo"])
     gallery = [{"src": optimise_photo(g["image"]), "fr": g.get("caption_fr", ""), "en": g.get("caption_en") or g.get("caption_fr", "")}
                for g in load_json("gallery") if g.get("image")]
     return {
@@ -107,6 +111,7 @@ def load_config():
         "social": {k: contact.get(k, "") for k in ("facebook", "tiktok", "instagram", "linkedin")} | {"whatsapp": bool(contact.get("whatsapp"))},
         "gallery": gallery,
         "reviews": reviews,
+        "sections": sections,
     }
 
 
@@ -349,6 +354,14 @@ def base_soup(lang):
         el["placeholder"] = T(lang, el["data-i18n-ph"])
     for el in soup.select("[data-i18n-alt]"):
         el["alt"] = T(lang, el["data-i18n-alt"])
+    # photo of the "Nos engagements" section (chosen in the dashboard)
+    sec = CFG.get("sections") or {}
+    promise_img = soup.select_one(".promise-photo img")
+    if promise_img is not None and sec.get("promise_photo"):
+        promise_img["src"] = sec["promise_photo"]
+        alt = sec.get(f"promise_alt_{lang}") or sec.get("promise_alt_fr")
+        if alt:
+            promise_img["alt"] = alt
     phone_digits = re.sub(r"[^\d+]", "", str(CFG.get("phone", "")))
     for el in soup.select("[data-phone]"):
         el.string = CFG.get("phone", "")

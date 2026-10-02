@@ -80,6 +80,23 @@ content:
         type: boolean
         default: false
 
+  - name: sections
+    label: "Photos des sections"
+    type: file
+    path: content/sections.json
+    format: json
+    fields:
+      - name: promise_photo
+        label: "Photo de la section « Nos engagements »"
+        type: image
+        required: true
+      - name: promise_alt_fr
+        label: "Description de la photo (français) — pour Google et l'accessibilité"
+        type: string
+      - name: promise_alt_en
+        label: "Description de la photo (anglais)"
+        type: string
+
   - name: contact
     label: "Contact & réseaux sociaux"
     type: file
