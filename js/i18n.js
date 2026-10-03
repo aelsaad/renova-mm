@@ -2,7 +2,7 @@
 window.I18N = {
   fr: {
     "meta.title": "Bricoleur à domicile à Paris · Petits travaux | RENOVA MM",
-    "meta.desc": "Petits travaux à Bagnolet, Paris et en Île-de-France : montage de meubles, plomberie, électricité, éclairage, réparations. Professionnels qualifiés, devis gratuit.",
+    "meta.desc": "Petits travaux à Bagnolet et à Paris : montage de meubles, plomberie, électricité, éclairage, réparations. Professionnels qualifiés, devis gratuit.",
     "meta.ogalt": "RENOVA MM — bricolage et petits travaux à Paris",
     "nav.services": "Services",
     "nav.who": "Pour qui",
@@ -14,7 +14,7 @@ window.I18N = {
     "hero.eyebrow": "Bricolage · Maintenance · Aménagement · Paris",
     "hero.t1": "Vos petits travaux,",
     "hero.t2": "entre de bonnes mains.",
-    "hero.sub": "Un robinet qui fuit, un meuble à monter, une prise à changer ? Les professionnels RENOVA MM interviennent chez vous et dans vos locaux à Paris et dans toute l'Île-de-France — avec un tarif clair et un travail soigné.",
+    "hero.sub": "Un robinet qui fuit, un meuble à monter, une prise à changer ? Les professionnels RENOVA MM interviennent chez vous et dans vos locaux à Paris et à Bagnolet — avec un tarif clair et un travail soigné.",
     "hero.cta1": "Demander un devis gratuit",
     "hero.cta2": "Nos services",
     "hero.chip1": "Devis gratuit",
@@ -46,13 +46,13 @@ window.I18N = {
     "svc.more.b": "Nous contacter",
     "svc.learn": "En savoir plus",
     "services": [
-      {"slug": "reparations", "t": "Réparation", "items": ["Portes qui frottent", "Poignées et serrures", "Vitres et carreaux", "Calfeutrage", "Rebouchage de trous"], "h1": "Petites réparations à domicile à Paris", "title": "Petites réparations à domicile à Paris | RENOVA MM", "intro": "Une porte qui frotte, une poignée qui tourne dans le vide, des trous à reboucher après un déménagement ? Nos professionnels réalisent toutes les petites réparations du quotidien dans votre appartement, votre maison ou vos locaux, à Paris et en Île-de-France. Nous arrivons avec l'outillage adapté et laissons les lieux propres."},
-      {"slug": "debarras", "t": "Débarras", "items": ["Caves et greniers", "Encombrants", "Meubles à déplacer", "Cartons lourds", "Aide au déménagement"], "h1": "Débarras et manutention à Paris", "title": "Débarras et manutention à Paris | RENOVA MM", "intro": "Cave encombrée, grenier à vider, meubles lourds à déplacer ou cartons à monter dans les étages : nous vous aidons à libérer de l'espace et à déplacer vos affaires en toute sécurité, à Paris et en Île-de-France."},
-      {"slug": "montage-meubles", "t": "Montage", "items": ["Meubles en kit", "Dressings et armoires", "Mobilier de bureau", "Tables et chaises", "Lits et commodes"], "h1": "Montage de meubles à Paris", "title": "Montage de meubles à Paris | RENOVA MM", "intro": "Armoire, dressing, lit, bureau ou cuisine en kit : nous montons vos meubles rapidement et proprement, en suivant les notices et en fixant au mur ce qui doit l'être pour votre sécurité. Pour les particuliers, les bureaux et les hôtels, à Paris et en Île-de-France."},
-      {"slug": "pose-installation", "t": "Pose", "items": ["Étagères et tringles", "Stores et rideaux", "Cadres et miroirs", "Parquet et moquette", "Meubles de cuisine"], "h1": "Pose et installation à Paris", "title": "Pose et installation à Paris : étagères, stores, miroirs | RENOVA MM", "intro": "Étagères, tringles à rideaux, stores, miroirs, cadres ou meubles de cuisine : nous posons et fixons solidement tous vos équipements, sur tous types de murs, avec le matériel de fixation adapté. À Paris et dans toute l'Île-de-France."},
-      {"slug": "plomberie", "t": "Plomberie", "items": ["Robinets et mitigeurs", "Chasses d'eau", "Joints silicone", "Débouchage", "Flexibles et raccords"], "h1": "Petite plomberie à Paris", "title": "Petite plomberie à Paris : fuite, robinet, joint | RENOVA MM", "intro": "Robinet qui goutte, chasse d'eau qui fuit, joint de douche à refaire ou évier bouché : nos intervenants s'occupent de vos petits travaux de plomberie à Paris et en Île-de-France, avant que la petite fuite ne devienne un gros dégât."},
-      {"slug": "electricite", "t": "Électricité", "items": ["Prises et interrupteurs", "Radiateurs électriques", "Sonnettes", "Remplacement d'appareillage", "Petits dépannages"], "h1": "Petits travaux d'électricité à Paris", "title": "Petits travaux d'électricité à Paris | RENOVA MM", "intro": "Prise ou interrupteur à remplacer, radiateur électrique à installer, sonnette à changer : nous réalisons vos petits travaux d'électricité en toute sécurité et dans le respect des normes, à Paris et en Île-de-France."},
-      {"slug": "eclairage", "t": "Éclairage", "items": ["Plafonniers", "Suspensions", "Appliques murales", "Spots et rampes", "Ampoules difficiles d'accès"], "h1": "Installation d'éclairage à Paris", "title": "Installation de luminaires à Paris | RENOVA MM", "intro": "Plafonnier, suspension, appliques, spots ou ampoules difficiles d'accès : nous installons et remplaçons vos luminaires pour un intérieur bien éclairé, chez vous comme dans vos locaux professionnels, à Paris et en Île-de-France."}
+      {"slug": "reparations", "t": "Réparation", "items": ["Portes qui frottent", "Poignées et serrures", "Vitres et carreaux", "Calfeutrage", "Rebouchage de trous"], "h1": "Petites réparations à domicile à Paris", "title": "Petites réparations à domicile à Paris | RENOVA MM", "intro": "Une porte qui frotte, une poignée qui tourne dans le vide, des trous à reboucher après un déménagement ? Nos professionnels réalisent toutes les petites réparations du quotidien dans votre appartement, votre maison ou vos locaux, à Paris et à Bagnolet. Nous arrivons avec l'outillage adapté et laissons les lieux propres."},
+      {"slug": "debarras", "t": "Débarras", "items": ["Caves et greniers", "Encombrants", "Meubles à déplacer", "Cartons lourds", "Aide au déménagement"], "h1": "Débarras et manutention à Paris", "title": "Débarras et manutention à Paris | RENOVA MM", "intro": "Cave encombrée, grenier à vider, meubles lourds à déplacer ou cartons à monter dans les étages : nous vous aidons à libérer de l'espace et à déplacer vos affaires en toute sécurité, à Paris et à Bagnolet."},
+      {"slug": "montage-meubles", "t": "Montage", "items": ["Meubles en kit", "Dressings et armoires", "Mobilier de bureau", "Tables et chaises", "Lits et commodes"], "h1": "Montage de meubles à Paris", "title": "Montage de meubles à Paris | RENOVA MM", "intro": "Armoire, dressing, lit, bureau ou cuisine en kit : nous montons vos meubles rapidement et proprement, en suivant les notices et en fixant au mur ce qui doit l'être pour votre sécurité. Pour les particuliers, les bureaux et les hôtels, à Paris et à Bagnolet."},
+      {"slug": "pose-installation", "t": "Pose", "items": ["Étagères et tringles", "Stores et rideaux", "Cadres et miroirs", "Parquet et moquette", "Meubles de cuisine"], "h1": "Pose et installation à Paris", "title": "Pose et installation à Paris : étagères, stores, miroirs | RENOVA MM", "intro": "Étagères, tringles à rideaux, stores, miroirs, cadres ou meubles de cuisine : nous posons et fixons solidement tous vos équipements, sur tous types de murs, avec le matériel de fixation adapté. À Paris et à Bagnolet."},
+      {"slug": "plomberie", "t": "Plomberie", "items": ["Robinets et mitigeurs", "Chasses d'eau", "Joints silicone", "Débouchage", "Flexibles et raccords"], "h1": "Petite plomberie à Paris", "title": "Petite plomberie à Paris : fuite, robinet, joint | RENOVA MM", "intro": "Robinet qui goutte, chasse d'eau qui fuit, joint de douche à refaire ou évier bouché : nos intervenants s'occupent de vos petits travaux de plomberie à Paris et à Bagnolet, avant que la petite fuite ne devienne un gros dégât."},
+      {"slug": "electricite", "t": "Électricité", "items": ["Prises et interrupteurs", "Radiateurs électriques", "Sonnettes", "Remplacement d'appareillage", "Petits dépannages"], "h1": "Petits travaux d'électricité à Paris", "title": "Petits travaux d'électricité à Paris | RENOVA MM", "intro": "Prise ou interrupteur à remplacer, radiateur électrique à installer, sonnette à changer : nous réalisons vos petits travaux d'électricité en toute sécurité et dans le respect des normes, à Paris et à Bagnolet."},
+      {"slug": "eclairage", "t": "Éclairage", "items": ["Plafonniers", "Suspensions", "Appliques murales", "Spots et rampes", "Ampoules difficiles d'accès"], "h1": "Installation d'éclairage à Paris", "title": "Installation de luminaires à Paris | RENOVA MM", "intro": "Plafonnier, suspension, appliques, spots ou ampoules difficiles d'accès : nous installons et remplaçons vos luminaires pour un intérieur bien éclairé, chez vous comme dans vos locaux professionnels, à Paris et à Bagnolet."}
     ],
 
     "work.eyebrow": "Nos réalisations",
@@ -81,8 +81,8 @@ window.I18N = {
     "pr.photo.alt": "Cuisine équipée réalisée par RENOVA MM",
 
     "map.eyebrow": "Zone d'intervention",
-    "map.title": "Bagnolet, Paris & Île-de-France",
-    "map.d": "Basés à Bagnolet, aux portes de Paris, nous intervenons dans les 20 arrondissements de Paris et dans toute l'Île-de-France : Seine-Saint-Denis, Hauts-de-Seine, Val-de-Marne, Yvelines, Essonne, Val-d'Oise et Seine-et-Marne. Pour les entreprises et les hôtels, nous nous déplaçons aussi partout en France.",
+    "map.title": "Bagnolet & Paris",
+    "map.d": "Basés à Bagnolet, aux portes de Paris, nous intervenons à Bagnolet et dans les 20 arrondissements de Paris. Un doute sur votre adresse ? Contactez-nous, nous vous répondons rapidement.",
     "map.cta": "Vérifier ma ville",
 
     "cta.title": "Un petit travail à faire ?",
@@ -95,7 +95,7 @@ window.I18N = {
     "ct.phone": "Téléphone",
     "ct.email": "E-mail",
     "ct.zone": "Zone",
-    "ct.zonev": "Bagnolet, Paris & Île-de-France",
+    "ct.zonev": "Bagnolet & Paris",
     "ct.follow": "Suivez-nous",
     "wa.label": "Écrivez-nous sur WhatsApp",
     "f.type": "Vous êtes",
@@ -121,7 +121,7 @@ window.I18N = {
     "f.err": "Merci d'indiquer votre nom, un e-mail valide et votre demande.",
     "f.subject": "Demande de devis",
 
-    "ft.tag": "Bricolage, maintenance et aménagement à Bagnolet, Paris et en Île-de-France.",
+    "ft.tag": "Bricolage, maintenance et aménagement à Bagnolet et à Paris.",
     "ft.legal": "Mentions légales",
     "ft.privacy": "Politique de confidentialité",
     "rev.eyebrow": "Avis clients",
@@ -139,7 +139,7 @@ window.I18N = {
 
   en: {
     "meta.title": "Handyman in Paris · Small home repairs | RENOVA MM",
-    "meta.desc": "Small jobs in Bagnolet, Paris & Île-de-France: furniture assembly, plumbing, electrical, lighting and repairs. Qualified professionals, free quote.",
+    "meta.desc": "Small jobs in Bagnolet & Paris: furniture assembly, plumbing, electrical, lighting and repairs. Qualified professionals, free quote.",
     "meta.ogalt": "RENOVA MM — handyman and small jobs in Paris",
     "nav.services": "Services",
     "nav.who": "Who we help",
@@ -151,7 +151,7 @@ window.I18N = {
     "hero.eyebrow": "Handyman · Maintenance · Fit-out · Paris",
     "hero.t1": "Your small jobs,",
     "hero.t2": "in safe hands.",
-    "hero.sub": "A leaking tap, furniture to assemble, a socket to replace? RENOVA MM professionals work in your home and your premises in Paris and across Île-de-France — with clear pricing and careful workmanship.",
+    "hero.sub": "A leaking tap, furniture to assemble, a socket to replace? RENOVA MM professionals work in your home and your premises in Paris and Bagnolet — with clear pricing and careful workmanship.",
     "hero.cta1": "Get a free quote",
     "hero.cta2": "Our services",
     "hero.chip1": "Free quote",
@@ -183,13 +183,13 @@ window.I18N = {
     "svc.more.b": "Contact us",
     "svc.learn": "Learn more",
     "services": [
-      {"slug": "reparations", "t": "Repairs", "items": ["Sticking doors", "Handles and locks", "Windows and panes", "Draught-proofing", "Filling holes"], "h1": "Small home repairs in Paris", "title": "Small home repairs in Paris | RENOVA MM", "intro": "A sticking door, a loose handle, holes to fill after a move? Our professionals take care of all the small everyday repairs in your flat, house or premises in Paris and Île-de-France. We come with the right tools and leave the place clean."},
-      {"slug": "debarras", "t": "Clearance", "items": ["Cellars and attics", "Bulky items", "Moving furniture", "Heavy boxes", "Help with moving"], "h1": "Clearance and heavy lifting in Paris", "title": "Clearance and heavy lifting in Paris | RENOVA MM", "intro": "A cluttered cellar, an attic to empty, heavy furniture to move or boxes to carry upstairs: we help you free up space and move your belongings safely in Paris and Île-de-France."},
-      {"slug": "montage-meubles", "t": "Assembly", "items": ["Flat-pack furniture", "Wardrobes", "Office furniture", "Tables and chairs", "Beds and dressers"], "h1": "Furniture assembly in Paris", "title": "Furniture assembly in Paris | RENOVA MM", "intro": "Wardrobes, walk-in closets, beds, desks or flat-pack kitchens: we assemble your furniture quickly and neatly, follow the instructions and fix to the wall whatever needs it for safety. For homes, offices and hotels in Paris and Île-de-France."},
-      {"slug": "pose-installation", "t": "Installation", "items": ["Shelves and rails", "Blinds and curtains", "Frames and mirrors", "Flooring and carpet", "Kitchen units"], "h1": "Fitting and installation in Paris", "title": "Fitting and installation in Paris: shelves, blinds, mirrors | RENOVA MM", "intro": "Shelves, curtain rails, blinds, mirrors, frames or kitchen units: we fit and secure all your fixtures firmly, on every type of wall, with the right fixings. In Paris and across Île-de-France."},
-      {"slug": "plomberie", "t": "Plumbing", "items": ["Taps and mixers", "Toilet cisterns", "Silicone seals", "Unblocking", "Hoses and fittings"], "h1": "Small plumbing jobs in Paris", "title": "Small plumbing jobs in Paris: leaks, taps, seals | RENOVA MM", "intro": "A dripping tap, a leaking cistern, a shower seal to redo or a blocked sink: we take care of your small plumbing jobs in Paris and Île-de-France before a small leak turns into a big problem."},
-      {"slug": "electricite", "t": "Electrical", "items": ["Sockets and switches", "Electric heaters", "Doorbells", "Replacing fittings", "Small repairs"], "h1": "Small electrical jobs in Paris", "title": "Small electrical jobs in Paris | RENOVA MM", "intro": "A socket or switch to replace, an electric heater to install, a doorbell to change: we carry out your small electrical jobs safely and in line with the standards in Paris and Île-de-France."},
-      {"slug": "eclairage", "t": "Lighting", "items": ["Ceiling lights", "Pendants", "Wall lights", "Spotlights and tracks", "Hard-to-reach bulbs"], "h1": "Lighting installation in Paris", "title": "Light fitting installation in Paris | RENOVA MM", "intro": "Ceiling lights, pendants, wall lights, spotlights or hard-to-reach bulbs: we install and replace your light fittings for a well-lit interior, at home or in your business premises, in Paris and Île-de-France."}
+      {"slug": "reparations", "t": "Repairs", "items": ["Sticking doors", "Handles and locks", "Windows and panes", "Draught-proofing", "Filling holes"], "h1": "Small home repairs in Paris", "title": "Small home repairs in Paris | RENOVA MM", "intro": "A sticking door, a loose handle, holes to fill after a move? Our professionals take care of all the small everyday repairs in your flat, house or premises in Paris and Bagnolet. We come with the right tools and leave the place clean."},
+      {"slug": "debarras", "t": "Clearance", "items": ["Cellars and attics", "Bulky items", "Moving furniture", "Heavy boxes", "Help with moving"], "h1": "Clearance and heavy lifting in Paris", "title": "Clearance and heavy lifting in Paris | RENOVA MM", "intro": "A cluttered cellar, an attic to empty, heavy furniture to move or boxes to carry upstairs: we help you free up space and move your belongings safely in Paris and Bagnolet."},
+      {"slug": "montage-meubles", "t": "Assembly", "items": ["Flat-pack furniture", "Wardrobes", "Office furniture", "Tables and chairs", "Beds and dressers"], "h1": "Furniture assembly in Paris", "title": "Furniture assembly in Paris | RENOVA MM", "intro": "Wardrobes, walk-in closets, beds, desks or flat-pack kitchens: we assemble your furniture quickly and neatly, follow the instructions and fix to the wall whatever needs it for safety. For homes, offices and hotels in Paris and Bagnolet."},
+      {"slug": "pose-installation", "t": "Installation", "items": ["Shelves and rails", "Blinds and curtains", "Frames and mirrors", "Flooring and carpet", "Kitchen units"], "h1": "Fitting and installation in Paris", "title": "Fitting and installation in Paris: shelves, blinds, mirrors | RENOVA MM", "intro": "Shelves, curtain rails, blinds, mirrors, frames or kitchen units: we fit and secure all your fixtures firmly, on every type of wall, with the right fixings. In Paris and Bagnolet."},
+      {"slug": "plomberie", "t": "Plumbing", "items": ["Taps and mixers", "Toilet cisterns", "Silicone seals", "Unblocking", "Hoses and fittings"], "h1": "Small plumbing jobs in Paris", "title": "Small plumbing jobs in Paris: leaks, taps, seals | RENOVA MM", "intro": "A dripping tap, a leaking cistern, a shower seal to redo or a blocked sink: we take care of your small plumbing jobs in Paris and Bagnolet before a small leak turns into a big problem."},
+      {"slug": "electricite", "t": "Electrical", "items": ["Sockets and switches", "Electric heaters", "Doorbells", "Replacing fittings", "Small repairs"], "h1": "Small electrical jobs in Paris", "title": "Small electrical jobs in Paris | RENOVA MM", "intro": "A socket or switch to replace, an electric heater to install, a doorbell to change: we carry out your small electrical jobs safely and in line with the standards in Paris and Bagnolet."},
+      {"slug": "eclairage", "t": "Lighting", "items": ["Ceiling lights", "Pendants", "Wall lights", "Spotlights and tracks", "Hard-to-reach bulbs"], "h1": "Lighting installation in Paris", "title": "Light fitting installation in Paris | RENOVA MM", "intro": "Ceiling lights, pendants, wall lights, spotlights or hard-to-reach bulbs: we install and replace your light fittings for a well-lit interior, at home or in your business premises, in Paris and Bagnolet."}
     ],
 
     "work.eyebrow": "Our work",
@@ -218,8 +218,8 @@ window.I18N = {
     "pr.photo.alt": "Fitted kitchen by RENOVA MM",
 
     "map.eyebrow": "Where we work",
-    "map.title": "Bagnolet, Paris & Île-de-France",
-    "map.d": "Based in Bagnolet, right next to Paris, we work in all 20 arrondissements of Paris and across Île-de-France: Seine-Saint-Denis, Hauts-de-Seine, Val-de-Marne, Yvelines, Essonne, Val-d'Oise and Seine-et-Marne. For businesses and hotels we also travel all over France.",
+    "map.title": "Bagnolet & Paris",
+    "map.d": "Based in Bagnolet, right next to Paris, we work in Bagnolet and in all 20 arrondissements of Paris. Not sure about your address? Get in touch and we'll get back to you quickly.",
     "map.cta": "Check my town",
 
     "cta.title": "Got a small job to do?",
@@ -232,7 +232,7 @@ window.I18N = {
     "ct.phone": "Phone",
     "ct.email": "Email",
     "ct.zone": "Area",
-    "ct.zonev": "Bagnolet, Paris & Île-de-France",
+    "ct.zonev": "Bagnolet & Paris",
     "ct.follow": "Follow us",
     "wa.label": "Message us on WhatsApp",
     "f.type": "You are",
@@ -258,7 +258,7 @@ window.I18N = {
     "f.err": "Please enter your name, a valid email and your request.",
     "f.subject": "Quote request",
 
-    "ft.tag": "Handyman, maintenance and fit-out services in Bagnolet, Paris and Île-de-France.",
+    "ft.tag": "Handyman, maintenance and fit-out services in Bagnolet and Paris.",
     "ft.legal": "Legal notice",
     "ft.privacy": "Privacy policy",
     "rev.eyebrow": "Reviews",

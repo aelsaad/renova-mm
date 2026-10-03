@@ -218,12 +218,9 @@
     const hex = [[2.37, 51.03], [8.23, 48.97], [7.5, 43.77], [3.17, 42.44], [-1.78, 43.36], [-4.75, 48.2]].map((c) => P(...c));
     const poly = hex.map((p) => p.map((v) => v.toFixed(1)).join(",")).join(" ");
     const [cx, cy] = P(9.1, 42.15);
-    const pins = [
-      ["Bagnolet · Paris", 2.42, 48.87, 1], ["Lille", 3.06, 50.63], ["Strasbourg", 7.75, 48.58], ["Lyon", 4.84, 45.76],
-      ["Marseille", 5.37, 43.3], ["Bordeaux", -0.58, 44.84], ["Nantes", -1.55, 47.22], ["Toulouse", 1.44, 43.6]
-    ];
-    const dots = [[-1.68, 48.11], [-4.49, 48.39], [7.26, 43.7], [3.88, 43.61], [5.04, 47.32], [3.08, 45.78], [0.69, 47.39],
-      [1.1, 49.44], [4.03, 49.26], [1.26, 45.83], [6.18, 48.69], [-0.37, 49.18], [0.34, 46.58], [2.3, 49.89], [6.03, 47.24], [5.72, 45.19]];
+    // One location only: the company works in Bagnolet & Paris.
+    const pins = [["Bagnolet · Paris", 2.42, 48.87, 1]];
+    const [zx, zy] = P(2.42, 48.87).map((v) => v.toFixed(1));
 
     const layers = 14;
     let html = "";
@@ -241,7 +238,8 @@
       <polygon points="${poly}" fill="url(#mapTop)" stroke="#E8C067" stroke-width="1.6" stroke-linejoin="round"/>
       <rect width="400" height="400" fill="url(#mapDots)" clip-path="url(#mapClip)"/>
       <ellipse cx="${cx}" cy="${cy}" rx="6" ry="14" transform="rotate(12 ${cx} ${cy})" fill="url(#mapTop)" stroke="#E8C067" stroke-width="1.4"/>
-      ${dots.map(([lo, la], i) => { const [x, y] = P(lo, la); return `<circle class="city-dot" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.6" opacity=".7"/><circle class="city-pulse" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3" style="animation-delay:${(i * 0.37) % 2.6}s"/>`; }).join("")}
+      <circle cx="${zx}" cy="${zy}" r="13" fill="rgba(232,192,103,.14)" stroke="rgba(232,192,103,.6)" stroke-width="1" stroke-dasharray="3 3"/>
+      ${[0, 0.87, 1.73].map((d) => `<circle class="city-pulse" cx="${zx}" cy="${zy}" r="5" style="animation-delay:${d}s"/>`).join("")}
     </svg>`;
     html += pins.map(([name, lo, la, main]) => {
       const [x, y] = P(lo, la);

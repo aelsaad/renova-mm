@@ -238,8 +238,7 @@ def frag(html):
 
 
 # ------------------------------------------------------------------ structured data
-AREA_SERVED = [{"@type": "City", "name": "Bagnolet"}, {"@type": "City", "name": "Paris"},
-               {"@type": "AdministrativeArea", "name": "Île-de-France"}]
+AREA_SERVED = [{"@type": "City", "name": "Bagnolet"}, {"@type": "City", "name": "Paris"}]
 
 def business_ld(lang):
     same_as = [u for k, u in (CFG.get("social") or {}).items() if isinstance(u, str) and u.startswith("http")]

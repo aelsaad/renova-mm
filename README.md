@@ -1,6 +1,6 @@
 # RENOVA MM — website
 
-Handyman, maintenance and fit-out services across France. French + English, 3D hero (Three.js).
+Handyman, maintenance and fit-out services in Bagnolet & Paris. French + English, 3D hero (Three.js).
 
 **Live:** https://aelsaad.github.io/renova-mm/ (GitHub Pages, repo `aelsaad/renova-mm`)
 
