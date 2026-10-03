@@ -51,7 +51,9 @@
   const lang = window.I18N[document.documentElement.lang] ? document.documentElement.lang : "fr";
   const t = (k) => {
     const d = window.I18N[lang];
-    return d[k] != null ? d[k] : window.I18N.fr[k];
+    const s = d[k] != null ? d[k] : window.I18N.fr[k];
+    // French: non-breaking space before ? ! : ; so the sign never starts a new line
+    return lang === "fr" && typeof s === "string" ? s.replace(/ +([?!:;»])/g, "\u00a0$1") : s;
   };
 
   /* ================= Reveal ================= */

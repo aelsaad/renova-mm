@@ -86,6 +86,20 @@ def optimise_photo(path):
         return str(out.relative_to(ROOT)).replace(os.sep, "/")
 
 
+FR_SPACE_BEFORE = re.compile(r" +([?!:;»])")
+
+
+def fr_typo(v):
+    """French puts a space before ? ! : ; » — make it non-breaking so the sign never starts a new line."""
+    if isinstance(v, str):
+        return FR_SPACE_BEFORE.sub("\u00a0\\1", v).replace("« ", "«\u00a0")
+    if isinstance(v, list):
+        return [fr_typo(x) for x in v]
+    if isinstance(v, dict):
+        return {k: fr_typo(x) for k, x in v.items()}
+    return v
+
+
 def load_config():
     """Merge content/*.json (edited in the dashboard) into the structure the pages use."""
     contact, settings = load_json("contact"), load_json("settings")
@@ -96,14 +110,14 @@ def load_config():
         reviews.append({
             "name": r.get("name", "").strip(), "city": r.get("city", ""), "rating": r.get("rating", 5),
             "date": str(r.get("date") or ""), "lang": r.get("lang") or "fr", "placeholder": bool(r.get("placeholder")),
-            "service": {"fr": r.get("service_fr", ""), "en": r.get("service_en", "")},
-            "text": {"fr": r.get("text_fr", ""), "en": r.get("text_en", "")},
+            "service": {"fr": fr_typo(r.get("service_fr", "")), "en": r.get("service_en", "")},
+            "text": {"fr": fr_typo(r.get("text_fr", "")), "en": r.get("text_en", "")},
         })
     reviews.sort(key=lambda r: r["date"], reverse=True)  # newest first
     sections = load_json("sections")
     if sections.get("promise_photo"):
         sections["promise_photo"] = optimise_photo(sections["promise_photo"])
-    gallery = [{"src": optimise_photo(g["image"]), "fr": g.get("caption_fr", ""), "en": g.get("caption_en") or g.get("caption_fr", "")}
+    gallery = [{"src": optimise_photo(g["image"]), "fr": fr_typo(g.get("caption_fr", "")), "en": g.get("caption_en") or g.get("caption_fr", "")}
                for g in load_json("gallery") if g.get("image")]
     return {
         **settings,
@@ -116,6 +130,7 @@ def load_config():
 
 
 I18N = load_js("js/i18n.js", "I18N")
+I18N["fr"] = fr_typo(I18N["fr"])
 CFG = load_config()
 SITE = CFG["siteUrl"].rstrip("/") + "/"
 LISTED = bool(CFG.get("listed"))
