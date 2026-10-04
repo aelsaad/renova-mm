@@ -343,6 +343,8 @@ function init() {
     p.delay = 0.3 + p.order * STAGGER * 1.6 + (i % 4) * 0.02;
     if (!reduceMotion) { p.mesh.position.y = p.target.y + DROP; p.mesh.visible = false; }
   });
+  const landedAt = reduceMotion ? 0 : Math.max(...parts.map((p) => p.delay)) + DUR; // house fully assembled
+  let landed = false;
   const easeOutBack = (x) => { const c1 = 1.5, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
   floaters.forEach((f) => { f.pivot.scale.setScalar(reduceMotion ? 1 : 0.001); });
 
@@ -367,6 +369,7 @@ function init() {
       const e = k >= 1 ? 1 : easeOutBack(k);
       p.mesh.position.y = p.target.y + DROP * (1 - e);
     }
+    if (!landed && t >= landedAt) { landed = true; host.classList.add("landed"); } // show the service badges
     const toolsIn = reduceMotion ? 1 : THREE.MathUtils.clamp((t - 2.6) / 1.2, 0, 1);
 
     // slow showcase rotation + mouse parallax

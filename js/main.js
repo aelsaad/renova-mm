@@ -56,6 +56,9 @@
     return lang === "fr" && typeof s === "string" ? s.replace(/ +([?!:;»])/g, "\u00a0$1") : s;
   };
 
+  // Safety net: show the hero badges even if the 3D scene never loads (js/scene.js normally adds .landed)
+  setTimeout(() => { const hv = $("#heroVisual"); if (hv) hv.classList.add("landed"); }, 6000);
+
   /* ================= Reveal ================= */
   const revealIO = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
