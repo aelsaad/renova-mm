@@ -140,11 +140,11 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 .fb3 { bottom: 9%; left: 12%; animation-delay: -4s; }
 @keyframes float { 50% { transform: translateY(-12px); } }
 /* badges slowly fade in while the 3D house comes down (js/scene.js adds .badges-in), in the order
-   the work is done: Montage (fb3) during the descent, then Électricité (fb2), then Plomberie (fb1) as it lands */
+   the work is done: Montage (fb3) with the first falling piece, then Électricité (fb2), then Plomberie (fb1) as it lands */
 .float-badge { opacity: 0; translate: 0 18px; scale: .92; transition: opacity 1.5s ease, translate 1.8s var(--ease), scale 1.8s var(--ease); }
 .badges-in .float-badge, .no-webgl .float-badge { opacity: 1; translate: none; scale: none; }
-.badges-in .fb2 { transition-delay: .9s; }
-.badges-in .fb1 { transition-delay: 1.8s; }
+.badges-in .fb2 { transition-delay: 1.2s; }
+.badges-in .fb1 { transition-delay: 2.4s; }
 
 .scroll-hint { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); display: grid; justify-items: center; gap: 10px; font: 600 11px var(--f-head); letter-spacing: .24em; text-transform: uppercase; color: var(--muted); }
 .scroll-hint i { width: 1px; height: 42px; background: linear-gradient(var(--gold), transparent); position: relative; overflow: hidden; }
