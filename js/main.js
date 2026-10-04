@@ -219,7 +219,6 @@
     const P = (lon, lat) => [40 + (lon - LON0) * CX * K, 44 + (LAT0 - lat) * K];
     const hex = [[2.37, 51.03], [8.23, 48.97], [7.5, 43.77], [3.17, 42.44], [-1.78, 43.36], [-4.75, 48.2]].map((c) => P(...c));
     const poly = hex.map((p) => p.map((v) => v.toFixed(1)).join(",")).join(" ");
-    const [cx, cy] = P(9.1, 42.15);
     // One named pin only: the company works in Bagnolet & Paris. The dots are decoration (no labels).
     const pins = [["Bagnolet · Paris", 2.42, 48.87, 1]];
     const dots = [[3.06, 50.63], [7.75, 48.58], [4.84, 45.76], [5.37, 43.3], [-0.58, 44.84], [-1.55, 47.22], [1.44, 43.6],
@@ -231,7 +230,7 @@
     let html = "";
     for (let i = layers; i >= 1; i--) {
       const shade = i === 1 ? "#E8C067" : (i < 4 ? "#C99A3A" : "#7d5a1d");
-      html += `<svg viewBox="0 0 400 400" style="position:absolute;inset:0;transform:translateZ(${-i * 1.6}px)"><polygon points="${poly}" fill="${shade}" stroke="${shade}" stroke-width="2" stroke-linejoin="round"/><ellipse cx="${cx}" cy="${cy}" rx="6" ry="14" transform="rotate(12 ${cx} ${cy})" fill="${shade}"/></svg>`;
+      html += `<svg viewBox="0 0 400 400" style="position:absolute;inset:0;transform:translateZ(${-i * 1.6}px)"><polygon points="${poly}" fill="${shade}" stroke="${shade}" stroke-width="2" stroke-linejoin="round"/></svg>`;
     }
     html += `<svg viewBox="0 0 400 400" style="position:absolute;inset:0;transform:translateZ(-60px)" class="map-shadow"><polygon points="${poly}" fill="#000"/></svg>`;
     html += `<svg viewBox="0 0 400 400" style="position:absolute;inset:0">
@@ -242,7 +241,6 @@
       </defs>
       <polygon points="${poly}" fill="url(#mapTop)" stroke="#E8C067" stroke-width="1.6" stroke-linejoin="round"/>
       <rect width="400" height="400" fill="url(#mapDots)" clip-path="url(#mapClip)"/>
-      <ellipse cx="${cx}" cy="${cy}" rx="6" ry="14" transform="rotate(12 ${cx} ${cy})" fill="url(#mapTop)" stroke="#E8C067" stroke-width="1.4"/>
       ${dots.map(([lo, la], i) => { const [x, y] = P(lo, la); return `<circle class="city-dot" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.6" opacity=".7"/><circle class="city-pulse" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3" style="animation-delay:${(i * 0.37) % 2.6}s"/>`; }).join("")}
       <circle cx="${zx}" cy="${zy}" r="13" fill="rgba(232,192,103,.14)" stroke="rgba(232,192,103,.6)" stroke-width="1" stroke-dasharray="3 3"/>
       ${[0, 0.87, 1.73].map((d) => `<circle class="city-pulse" cx="${zx}" cy="${zy}" r="5" style="animation-delay:${d}s"/>`).join("")}
