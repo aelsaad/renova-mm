@@ -48,18 +48,5 @@
     "text_en": "test test test",
     "visible": true,
     "placeholder": true
-  },
-  {
-    "name": "Test",
-    "city": "Test",
-    "rating": 5,
-    "date": "2026-10-01",
-    "lang": "fr",
-    "service_fr": "Test",
-    "service_en": "Test",
-    "text_fr": "test test test",
-    "text_en": "test test test",
-    "visible": true,
-    "placeholder": true
   }
 ]
