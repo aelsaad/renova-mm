@@ -56,8 +56,11 @@
     return lang === "fr" && typeof s === "string" ? s.replace(/ +([?!:;»])/g, "\u00a0$1") : s;
   };
 
-  // Safety net: show the hero badges even if the 3D scene never loads (js/scene.js normally adds .badges-in)
-  setTimeout(() => { const hv = $("#heroVisual"); if (hv) hv.classList.add("badges-in"); }, 6000);
+  // Safety net: show the hero badges if the 3D scene never starts (js/scene.js normally adds .badges-1/2/3)
+  setTimeout(() => {
+    const hv = $("#heroVisual");
+    if (hv && !hv.classList.contains("scene-on")) hv.classList.add("badges-1", "badges-2", "badges-3");
+  }, 6000);
 
   /* ================= Reveal ================= */
   const revealIO = new IntersectionObserver((entries) => {

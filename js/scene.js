@@ -344,8 +344,11 @@ function init() {
     if (!reduceMotion) { p.mesh.position.y = p.target.y + DROP; p.mesh.visible = false; }
   });
   const landedAt = reduceMotion ? 0 : Math.max(...parts.map((p) => p.delay)) + DUR; // house fully assembled
-  const badgesAt = reduceMotion ? 0 : Math.min(...parts.map((p) => p.delay)); // badges start with the first falling piece
-  let badgesShown = false;
+  // service badges, in the order the work is done: Montage with the first falling piece,
+  // Électricité once the house is complete, then Plomberie (CSS shows them via .badges-1/2/3)
+  const badgeTimes = reduceMotion ? [0, 0, 0] : [Math.min(...parts.map((p) => p.delay)), landedAt, landedAt + 1];
+  let badgeStage = 0;
+  host.classList.add("scene-on"); // tells main.js the scene runs, so its fallback stays out of the way
   const easeOutBack = (x) => { const c1 = 1.5, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
   floaters.forEach((f) => { f.pivot.scale.setScalar(reduceMotion ? 1 : 0.001); });
 
@@ -370,7 +373,7 @@ function init() {
       const e = k >= 1 ? 1 : easeOutBack(k);
       p.mesh.position.y = p.target.y + DROP * (1 - e);
     }
-    if (!badgesShown && t >= badgesAt) { badgesShown = true; host.classList.add("badges-in"); }
+    while (badgeStage < 3 && t >= badgeTimes[badgeStage]) host.classList.add("badges-" + ++badgeStage);
     const toolsIn = reduceMotion ? 1 : THREE.MathUtils.clamp((t - 2.6) / 1.2, 0, 1);
 
     // slow showcase rotation + mouse parallax
