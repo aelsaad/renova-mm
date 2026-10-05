@@ -137,7 +137,7 @@ window.I18N = {
     "sp.what": "Ce que nous faisons",
     "sp.others": "Nos autres services",
     "sp.why": "Pourquoi choisir RENOVA MM ?",
-    "ft.rights": "All rights reserved."
+    "ft.rights": "Tous droits réservés."
   },
 
   en: {
