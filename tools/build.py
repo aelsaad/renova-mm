@@ -154,6 +154,10 @@ def service_path(lang, slug):
     return f"services/{slug}.html" if lang == "fr" else f"en/services/{slug}.html"
 
 
+def legal_path(lang):
+    return "mentions-legales.html" if lang == "fr" else "en/mentions-legales.html"
+
+
 def public_url(path):
     """Absolute URL; index.html pages are addressed by their folder."""
     return SITE + (path[: -len("index.html")] if path.endswith("index.html") else path)
@@ -496,6 +500,34 @@ def service_main(lang, idx, home_soup):
     return main
 
 
+def link_legal(soup, lang):
+    """Footer and form links to the legal notice / privacy policy page."""
+    for el, hash_ in [(a, "") for a in soup.select('a[data-i18n="ft.legal"]')] + \
+                     [(a, "confidentialite") for a in soup.select('a[data-i18n="ft.privacy"]')]:
+        el["data-page"], el["data-hash"], el["href"] = legal_path(lang), hash_, "#"
+
+
+def legal_main(lang):
+    """Legal notice + privacy policy (src/legal-<lang>.html, company details from content/company.json)."""
+    company = load_json("company")
+    html = (ROOT / "src" / f"legal-{lang}.html").read_text(encoding="utf-8")
+    html = html.format(home_link=page_link(home_path(lang)), **company)
+    if lang == "fr":
+        html = fr_typo(html)
+    html = re.sub(r"(?<=[\dA-Z]) (?=\d)|(?<=\d) (?=€)", "\u00a0", html)  # keep numbers (SIREN, VAT, capital) on one line
+    main = frag(html).find("main")
+    tel = re.sub(r"[^\d+]", "", str(CFG.get("phone", "")))
+    for a in main.select("[data-phone-link]"):
+        a["href"] = f"tel:{tel}"
+    for a in main.select("[data-email-link]"):
+        a["href"] = f"mailto:{CFG.get('email', '')}"
+    for el in main.select("[data-phone]"):
+        el.string = CFG.get("phone", "")
+    for el in main.select("[data-email]"):
+        el.string = CFG.get("email", "")
+    return main
+
+
 def finalize(soup, out_path):
     """Resolve page links, rewrite asset paths for the page's folder depth, write the file."""
     is_home = out_path.endswith("index.html")
@@ -547,6 +579,7 @@ def build():
 
     for lang in LANGS:
         home = base_soup(lang)
+        link_legal(home, lang)
         set_head(home, lang, T(lang, "meta.title"), T(lang, "meta.desc"), home_path(lang),
                  {l: home_path(l) for l in LANGS}, [business_ld(lang)])
         home_copy = copy.copy(home)  # pristine sections to reuse on service pages
@@ -561,6 +594,15 @@ def build():
             set_head(page, lang, s["title"], s["intro"][:155].rsplit(" ", 1)[0] + "…" if len(s["intro"]) > 158 else s["intro"],
                      path, {l: service_path(l, s["slug"]) for l in LANGS}, service_ld(lang, s))
             written.append(finalize(page, path))
+
+        legal = copy.copy(home_copy)
+        legal.find("main").replace_with(legal_main(lang))
+        for el in legal.select('script[type="importmap"], script[src*="scene.js"]'):
+            el.decompose()
+        set_head(legal, lang, T(lang, "legal.title"), T(lang, "legal.desc"), legal_path(lang),
+                 {l: legal_path(l) for l in LANGS}, [])
+        legal.head.find("meta", attrs={"name": "robots"})["content"] = "noindex, follow"  # not useful in search results
+        written.append(finalize(legal, legal_path(lang)))
 
     # sitemap with hreflang alternates
     today = datetime.date.today().isoformat()

@@ -34,7 +34,7 @@ jobs:
       - name: Collect the public files
         run: |
           mkdir -p _site
-          cp -R index.html en services css js assets sitemap.xml robots.txt _site/
+          cp -R index.html mentions-legales.html en services css js assets sitemap.xml robots.txt _site/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

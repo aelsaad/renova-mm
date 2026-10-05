@@ -127,3 +127,38 @@ content:
         label: "Bouton WhatsApp (utilise le numéro de téléphone)"
         type: boolean
         default: true
+
+  - name: company
+    label: "Société (mentions légales)"
+    type: file
+    path: content/company.json
+    format: json
+    fields:
+      - name: name
+        label: "Dénomination"
+        type: string
+        required: true
+      - name: legal_form
+        label: "Forme juridique (ex. SAS)"
+        type: string
+      - name: capital
+        label: "Capital social (ex. 2 000 €)"
+        type: string
+      - name: address
+        label: "Siège social"
+        type: string
+      - name: siren
+        label: "SIREN"
+        type: string
+      - name: siret
+        label: "SIRET du siège"
+        type: string
+      - name: rcs
+        label: "RCS (ville + numéro)"
+        type: string
+      - name: vat
+        label: "N° TVA intracommunautaire"
+        type: string
+      - name: president
+        label: "Président (directeur de la publication)"
+        type: string
