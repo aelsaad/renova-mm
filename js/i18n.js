@@ -1,9 +1,9 @@
 /* RENOVA MM — translations (fr / en) */
 window.I18N = {
   fr: {
-    "meta.title": "Bricoleur à domicile à Paris · Petits travaux | RENOVA MM",
+    "meta.title": "Bricolage et rénovation à Paris et Bagnolet | RENOVA MM",
     "meta.desc": "Travaux et rénovation à Bagnolet et à Paris : cuisines, salles de bains, sols, peinture, électricité, montage et aménagement. Professionnels qualifiés, devis gratuit.",
-    "meta.ogalt": "RENOVA MM — bricolage et petits travaux à Paris",
+    "meta.ogalt": "RENOVA MM — bricolage et rénovation à Paris et Bagnolet",
     "nav.services": "Services",
     "nav.who": "Clients",
     "nav.work": "Réalisations",
@@ -141,9 +141,9 @@ window.I18N = {
   },
 
   en: {
-    "meta.title": "Handyman in Paris · Small home repairs | RENOVA MM",
+    "meta.title": "Handyman and renovation in Paris & Bagnolet | RENOVA MM",
     "meta.desc": "Home improvement in Bagnolet & Paris: kitchens, bathrooms, flooring, painting, electrical, assembly and fit-out. Qualified professionals, free quote.",
-    "meta.ogalt": "RENOVA MM — handyman and small jobs in Paris",
+    "meta.ogalt": "RENOVA MM — handyman and renovation in Paris & Bagnolet",
     "nav.services": "Services",
     "nav.who": "Clients",
     "nav.work": "Our work",
