@@ -127,6 +127,9 @@ content:
         label: "Bouton WhatsApp (utilise le numéro de téléphone)"
         type: boolean
         default: true
+      - name: google_review
+        label: "Lien « Laisser un avis sur Google » (vide = masqué)"
+        type: string
 
   - name: company
     label: "Société (mentions légales)"

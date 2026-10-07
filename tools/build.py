@@ -122,6 +122,7 @@ def load_config():
     return {
         **settings,
         "phone": contact.get("phone", ""), "email": contact.get("email", ""),
+        "google_review": contact.get("google_review", ""),
         "social": {k: contact.get(k, "") for k in ("facebook", "tiktok", "instagram", "linkedin")} | {"whatsapp": bool(contact.get("whatsapp"))},
         "gallery": gallery,
         "reviews": reviews,
@@ -406,6 +407,11 @@ def base_soup(lang):
             view["class"] = view.get("class", []) + ["rev-marquee" if moving else "rev-static"]
             if moving:  # ~8 s per card keeps the speed constant whatever the number of reviews
                 view["style"] = f"--rev-dur: {len(review_list(lang)) * 8}s"
+            google = soup.find(id="googleReview")
+            if CFG.get("google_review"):
+                google["href"] = CFG["google_review"]
+            else:
+                google.decompose()
         else:
             reviews.decompose()  # no reviews yet -> no section
     sel = soup.find(id="serviceSelect")
