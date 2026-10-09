@@ -341,8 +341,12 @@ function init() {
   parts.sort((a, b) => a.order - b.order);
   parts.forEach((p, i) => {
     p.delay = 0.3 + p.order * STAGGER * 1.6 + (i % 4) * 0.02;
-    if (!reduceMotion) { p.mesh.position.y = p.target.y + DROP; p.mesh.visible = false; }
+    if (!reduceMotion) p.mesh.position.y = p.target.y + DROP;
   });
+  // compile every material now, while all parts are visible: otherwise the GPU compiles them
+  // during the drop and the first frames are so slow that the house seems to just appear
+  renderer.compile(scene, camera);
+  if (!reduceMotion) parts.forEach((p) => { p.mesh.visible = false; });
   const landedAt = reduceMotion ? 0 : Math.max(...parts.map((p) => p.delay)) + DUR; // house fully assembled
   // service badges, in the order the work is done: Montage with the first falling piece,
   // Électricité once the house is complete, then Plomberie (CSS shows them via .badges-1/2/3)
@@ -357,12 +361,13 @@ function init() {
   new IntersectionObserver((en) => { visible = en[0].isIntersecting; }).observe(host);
   const clock = new THREE.Clock();
   let rotY = -0.5;
+  let t = 0; // animation time: adds up capped frame steps, so a slow frame or a background tab never skips the build-in
 
   function frame() {
     requestAnimationFrame(frame);
-    if (!visible) { clock.getDelta(); return; }
     const dt = Math.min(clock.getDelta(), 0.05);
-    const t = clock.elapsedTime;
+    if (!visible) return;
+    t += dt;
 
     // assemble
     for (const p of parts) {
